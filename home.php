@@ -36,12 +36,6 @@ if ($varsesion == null || $varsesion = '') {
             box-sizing: border-box;
         }
 
-        #fecha span {
-            /* background-color: black; */
-            /* padding: 3px 6px; */
-            /* color: #cccccc; */
-        }
-
         .top {
             position: sticky;
             top: 0;

@@ -249,6 +249,25 @@ if ($varsesion == null || $varsesion = '') {
             border-radius: 1px;
         }
 
+        .historial {
+            background-color: #212529;
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 80vh;
+            top: 80px;
+            left: 0;
+            z-index: 9999;
+            color: white;
+            border: 1px solid #e9ecef;
+        }
+
+        .historial .historial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         @media (max-width: 992px) {
             .bars__menu {
                 display: block;
@@ -450,15 +469,6 @@ if ($varsesion == null || $varsesion = '') {
                                     <option value="Bicicleta"></option>
                                 </datalist>
                             </div>
-                            <!-- <div class="form-group my-1" style='position: relative;'>
-                            <label for="observacion">Observación</label>
-                            <i class="fa-solid fa-xmark cerrar-descripcion"></i>
-                            <input type="text" name="observacion" placeholder="Ingresar info" class="form-control" id="observacion" list="observacion">
-                            <datalist id="observacion">
-                                <option value=""></option>
-                                <option value="ATV 150cc"></option>
-                            </datalist>
-                        </div> -->
                             <div class="form-group my-1">
                                 <label for="tienda">Tienda</label>
                                 <select name="tienda" id="tienda" class="form-select">
@@ -517,6 +527,13 @@ if ($varsesion == null || $varsesion = '') {
                     <tbody id="resultado">
                     </tbody>
                 </table>
+                <section class="historial" id="historial">
+                    <div class="historial-header">
+                        <div>Vehiculo Nro.</div>
+                        <button onclick="historialClose()">X</button>
+                    </div>
+                    <h4>Historial del vehículo</h4>
+                </section>
             </div>
         </div>
     </div>

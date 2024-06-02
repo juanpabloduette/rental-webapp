@@ -208,6 +208,47 @@ if ($varsesion == null || $varsesion = '') {
             border-radius: 1px;
         }
 
+        .btn-box-tool {
+            display: block;
+            border: none;
+            background-color: transparent;
+            color: white;
+
+        }
+
+        .btn-box-tool:hover::before {
+            content: "Historial";
+            color: black;
+            font-size: 12px;
+            background-color: white;
+            position: absolute;
+            left: 20px;
+            top: -20px;
+            height: 30px;
+            width: 55px;
+            border: 5px solid transparent;
+            border-radius: 5px;
+            box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.60);
+            -webkit-box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.60);
+        }
+
+        .btn-box-tool:hover::after {
+            content: "";
+            background-color: white;
+            position: absolute;
+            left: 25px;
+            top: 4px;
+            height: 0;
+            width: 0;
+            border: 10px solid transparent;
+            border-bottom-width: 0px;
+            border-right-width: 0px;
+            border-top-color: white;
+            transform: translatex(50%) rotate(315deg);
+            /* z-index: -1; */
+            border-radius: 1px;
+        }
+
         @media (max-width: 992px) {
             .bars__menu {
                 display: block;

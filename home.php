@@ -222,7 +222,7 @@ if ($varsesion == null || $varsesion = '') {
             font-size: 12px;
             background-color: white;
             position: absolute;
-            left: 20px;
+            left: 15px;
             top: -20px;
             height: 30px;
             width: 55px;
@@ -236,7 +236,7 @@ if ($varsesion == null || $varsesion = '') {
             content: "";
             background-color: white;
             position: absolute;
-            left: 25px;
+            left: 20px;
             top: 4px;
             height: 0;
             width: 0;
@@ -252,20 +252,41 @@ if ($varsesion == null || $varsesion = '') {
         .historial {
             background-color: #212529;
             display: none;
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 80vh;
-            top: 80px;
+            top: 69px;
             left: 0;
             z-index: 9999;
             color: white;
             border: 1px solid #e9ecef;
         }
 
+        .historial .historial-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
         .historial .historial-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .historial .historial-span {
+            border-radius: 50%;
+            background-color: #e9ecef;
+            color: #212529;
+            padding: 5px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
         }
 
         @media (max-width: 992px) {
@@ -527,12 +548,47 @@ if ($varsesion == null || $varsesion = '') {
                     <tbody id="resultado">
                     </tbody>
                 </table>
+                <!-- <div class="modal-dialog modal-fullscreen-sm-down">
+                    ...
+                </div> -->
                 <section class="historial" id="historial">
-                    <div class="historial-header">
-                        <div>Vehiculo Nro.</div>
-                        <button onclick="historialClose()">X</button>
+                    <div class="historial-container">
+                        <div class="historial-header">
+                            <div>Vehiculo Nro.</div>
+                            <button onclick="historialClose()">X</button>
+                        </div>
+                        <h4 id="historial-title">Historial del vehículo</h4>
+                        <table class="table table-hover table-responsive-{576px} table-striped align-middle table-dark table-sm">
+                            <thead>
+                                <tr>
+                                    <th class='td-celdas'><input type="text" class="form-control"></th>
+                                    <th class='td-celdas'><input type="date" class="form-control"></th>
+                                    <th class='td-celdas'><input type="text" class="form-control"></th>
+                                    <th class='td-celdas'><input type="text" class="form-control"></th>
+                                    <th class='td-celdas'><input type="text" class="form-control"></th>
+                                    <th class='td-celdas'><input type="text" class="form-control"></th>
+                                    <th class='td-celdas'><button class="btn btn-dark btn-block">Ingresar</button></th>
+                                </tr>
+                                <tr>
+                                    <th class='td-celdas'>Servicio</th>
+                                    <th class='td-celdas'>Fecha</th>
+                                    <th class='td-celdas'>Lugar</th>
+                                    <th class='td-celdas'>Costo</th>
+                                    <th class='td-celdas'>Kms.</th>
+                                    <th class='td-celdas'>Otros</th>
+                                </tr>
+                            </thead>
+                            <tbody id="result">
+                                <tr>
+                                <tr>Cambio de fluidos</tr>
+                                <tr>15-5-2024</tr>
+                                <tr>Taller</tr>
+                                <tr></tr>
+                                <tr></tr>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <h4>Historial del vehículo</h4>
                 </section>
             </div>
         </div>

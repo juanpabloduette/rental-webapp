@@ -38,6 +38,7 @@ foreach ($resultado as $data) {
     };
     $id = $data['id'];
     $codigo = $data['codigo'];
+    $desc_vehiculo = $data['producto'];
     echo "<tr>
             <td class='td-celdas'>" . $data['codigo'] . "</td>
             <td class='td-color'>

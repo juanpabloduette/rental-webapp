@@ -232,9 +232,9 @@ cancelar.addEventListener("click", () => {
 });
 
 const historial = document.getElementById("historial");
-const historialTitle = document.getElementById("historial-title");
+const historialVehiculo = document.getElementById("historial-vehiculo");
 function Historial(cod) {
-	historialTitle.innerHTML = `Historial del vehículo: <span class='historial-span'>${cod}</span>`;
+	historialVehiculo.innerHTML = `Vehiculo: <span class='historial-span'>${cod}</span>`;
 	historial.style.display = "block";
 }
 

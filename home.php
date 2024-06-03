@@ -557,7 +557,7 @@ if ($varsesion == null || $varsesion = '') {
                             <div>Vehiculo Nro.</div>
                             <button onclick="historialClose()">X</button>
                         </div>
-                        <h4 id="historial-title">Historial del vehículo</h4>
+                        <h4 id="historial-vehiculo">Historial del vehículo</h4>
                         <table class="table table-hover table-responsive-{576px} table-striped align-middle table-dark table-sm">
                             <thead>
                                 <tr>
@@ -578,13 +578,96 @@ if ($varsesion == null || $varsesion = '') {
                                     <th class='td-celdas'>Otros</th>
                                 </tr>
                             </thead>
-                            <tbody id="result">
+                            <tbody id="service">
                                 <tr>
-                                <tr>Cambio de fluidos</tr>
-                                <tr>15-5-2024</tr>
-                                <tr>Taller</tr>
-                                <tr></tr>
-                                <tr></tr>
+                                    <td>Cambio de fluidos</td>
+                                    <td>15-5-2024</td>
+                                    <td>Taller</td>
+                                    <td>$1000</td>
+                                    <td>6000</td>
+                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                    <td>
+                                        <div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                            </div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cambio de fluidos</td>
+                                    <td>15-5-2024</td>
+                                    <td>Taller</td>
+                                    <td>$1000</td>
+                                    <td>6000</td>
+                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                    <td>
+                                        <div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                            </div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cambio de fluidos</td>
+                                    <td>15-5-2024</td>
+                                    <td>Taller</td>
+                                    <td>$1000</td>
+                                    <td>6000</td>
+                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                    <td>
+                                        <div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                            </div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cambio de fluidos</td>
+                                    <td>15-5-2024</td>
+                                    <td>Taller</td>
+                                    <td>$1000</td>
+                                    <td>6000</td>
+                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                    <td>
+                                        <div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                            </div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cambio de fluidos</td>
+                                    <td>15-5-2024</td>
+                                    <td>Taller</td>
+                                    <td>$1000</td>
+                                    <td>6000</td>
+                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                    <td>
+                                        <div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                            </div>
+                                            <div style='position: relative;'>
+                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -593,7 +676,7 @@ if ($varsesion == null || $varsesion = '') {
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 </body>
 

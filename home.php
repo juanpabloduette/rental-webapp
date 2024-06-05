@@ -28,7 +28,6 @@ if ($varsesion == null || $varsesion = '') {
     <script src="https://kit.fontawesome.com/81e9130226.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="./css.css"> -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
     <style>
         * {
             padding: 0;
@@ -36,10 +35,30 @@ if ($varsesion == null || $varsesion = '') {
             box-sizing: border-box;
         }
 
+        /* HISTORIAL */
+
+        .field-servicio {
+            max-width: 150px;
+        }
+
+        .field-fecha {
+            max-width: 120px;
+        }
+
+        .field-costo {
+            max-width: 80px;
+        }
+
+        .field-kms {
+            max-width: 80px;
+        }
+
+        /* FIN DE HISTORIAL */
+
         .top {
             position: sticky;
             top: 0;
-            z-index: 999999999999;
+            z-index: 1040;
         }
 
         .top a {
@@ -249,45 +268,6 @@ if ($varsesion == null || $varsesion = '') {
             border-radius: 1px;
         }
 
-        .historial {
-            background-color: #212529;
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 80vh;
-            top: 69px;
-            left: 0;
-            z-index: 9999;
-            color: white;
-            border: 1px solid #e9ecef;
-        }
-
-        .historial .historial-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px;
-        }
-
-        .historial .historial-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .historial .historial-span {
-            border-radius: 50%;
-            background-color: #e9ecef;
-            color: #212529;
-            padding: 5px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-
-        }
 
         @media (max-width: 992px) {
             .bars__menu {
@@ -346,6 +326,11 @@ if ($varsesion == null || $varsesion = '') {
                 <span class="line2__bars-menu"></span>
                 <span class="line3__bars-menu"></span>
             </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel__top">
+            <p>PANEL DE DATOS</p>
         </div>
     </div>
     <div class="container mt-2">
@@ -548,135 +533,175 @@ if ($varsesion == null || $varsesion = '') {
                     <tbody id="resultado">
                     </tbody>
                 </table>
-                <!-- <div class="modal-dialog modal-fullscreen-sm-down">
-                    ...
-                </div> -->
-                <section class="historial" id="historial">
-                    <div class="historial-container">
-                        <div class="historial-header">
-                            <div>Vehiculo Nro.</div>
-                            <button onclick="historialClose()">X</button>
+                <div class="modal fade" id="historialmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content bg-dark text-white">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"> Historial Vehículo Nro.</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-hover table-responsive-{576px} table-striped align-middle table-dark table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th class='td-celdas'><input type="text" class="form-control form-control-sm field-servicio" placeholder="Servicio"></th>
+                                            <th class='td-celdas'><input type="date" class="form-control form-control-sm field-fecha"></th>
+                                            <th class='td-celdas'><input type="text" class="form-control form-control-sm field-lugar" placeholder="Lugar"></th>
+                                            <th class='td-celdas'><input type="text" class="form-control form-control-sm field-costo" placeholder="Costo"></th>
+                                            <th class='td-celdas'><input type="text" class="form-control form-control-sm field-kms" placeholder="Kms."></th>
+                                            <th class='td-celdas'><input type="text" class="form-control form-control-sm field-notas" placeholder="Notas"></th>
+                                            <th class='td-celdas'><button class="btn btn-success btn-block btn-sm">Ingresar</button></th>
+                                        </tr>
+                                        <tr>
+                                            <th class='td-celdas'>Servicio</th>
+                                            <th class='td-celdas'>Fecha</th>
+                                            <th class='td-celdas'>Lugar</th>
+                                            <th class='td-celdas'>Costo</th>
+                                            <th class='td-celdas'>Kms.</th>
+                                            <th class='td-celdas'>Notas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="service">
+                                        <tr>
+                                            <td>Cambio de fluidos</td>
+                                            <td>15-5-2024</td>
+                                            <td>Taller</td>
+                                            <td>$1000</td>
+                                            <td>6000</td>
+                                            <td>se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>
+                                                <div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cambio de aros</td>
+                                            <td>15-5-2024</td>
+                                            <td>Taller</td>
+                                            <td>$5000</td>
+                                            <td>7800</td>
+                                            <td>se realizó cambio de aros y pistones</td>
+                                            <td>
+                                                <div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cambio de fluidos</td>
+                                            <td>15-5-2024</td>
+                                            <td>Taller</td>
+                                            <td>$1000</td>
+                                            <td>6000</td>
+                                            <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>
+                                                <div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cambio de neumaticos</td>
+                                            <td>15-8-2024</td>
+                                            <td>Taller Oaxaca</td>
+                                            <td>$4500</td>
+                                            <td>6000</td>
+                                            <td>se realizó cambio de rines</td>
+                                            <td>
+                                                <div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cambio de fluidos</td>
+                                            <td>15-5-2024</td>
+                                            <td>Taller</td>
+                                            <td>$1000</td>
+                                            <td>6000</td>
+                                            <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>
+                                                <div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cambio de fluidos</td>
+                                            <td>15-5-2024</td>
+                                            <td>Taller</td>
+                                            <td>$1000</td>
+                                            <td>6000</td>
+                                            <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>
+                                                <div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cambio de fluidos</td>
+                                            <td>15-5-2024</td>
+                                            <td>Taller</td>
+                                            <td>$1000</td>
+                                            <td>6000</td>
+                                            <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>
+                                                <div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
                         </div>
-                        <h4 id="historial-vehiculo">Historial del vehículo</h4>
-                        <table class="table table-hover table-responsive-{576px} table-striped align-middle table-dark table-sm">
-                            <thead>
-                                <tr>
-                                    <th class='td-celdas'><input type="text" class="form-control"></th>
-                                    <th class='td-celdas'><input type="date" class="form-control"></th>
-                                    <th class='td-celdas'><input type="text" class="form-control"></th>
-                                    <th class='td-celdas'><input type="text" class="form-control"></th>
-                                    <th class='td-celdas'><input type="text" class="form-control"></th>
-                                    <th class='td-celdas'><input type="text" class="form-control"></th>
-                                    <th class='td-celdas'><button class="btn btn-dark btn-block">Ingresar</button></th>
-                                </tr>
-                                <tr>
-                                    <th class='td-celdas'>Servicio</th>
-                                    <th class='td-celdas'>Fecha</th>
-                                    <th class='td-celdas'>Lugar</th>
-                                    <th class='td-celdas'>Costo</th>
-                                    <th class='td-celdas'>Kms.</th>
-                                    <th class='td-celdas'>Otros</th>
-                                </tr>
-                            </thead>
-                            <tbody id="service">
-                                <tr>
-                                    <td>Cambio de fluidos</td>
-                                    <td>15-5-2024</td>
-                                    <td>Taller</td>
-                                    <td>$1000</td>
-                                    <td>6000</td>
-                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
-                                    <td>
-                                        <div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
-                                            </div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Cambio de fluidos</td>
-                                    <td>15-5-2024</td>
-                                    <td>Taller</td>
-                                    <td>$1000</td>
-                                    <td>6000</td>
-                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
-                                    <td>
-                                        <div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
-                                            </div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Cambio de fluidos</td>
-                                    <td>15-5-2024</td>
-                                    <td>Taller</td>
-                                    <td>$1000</td>
-                                    <td>6000</td>
-                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
-                                    <td>
-                                        <div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
-                                            </div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Cambio de fluidos</td>
-                                    <td>15-5-2024</td>
-                                    <td>Taller</td>
-                                    <td>$1000</td>
-                                    <td>6000</td>
-                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
-                                    <td>
-                                        <div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
-                                            </div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Cambio de fluidos</td>
-                                    <td>15-5-2024</td>
-                                    <td>Taller</td>
-                                    <td>$1000</td>
-                                    <td>6000</td>
-                                    <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
-                                    <td>
-                                        <div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
-                                            </div>
-                                            <div style='position: relative;'>
-                                                <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
-                </section>
+                </div>
             </div>
         </div>
     </div>
     <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 

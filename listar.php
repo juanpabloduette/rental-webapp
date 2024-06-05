@@ -44,7 +44,7 @@ foreach ($resultado as $data) {
             <td class='td-color'>
                 <div class='td-display' style='display: flex; justify-content: center; align-items: center; flex-direction: column; position: relative; padding: 2px 0;'>
                     <i class='fa-solid fa-circle' style='font-size: 11px; margin: 2px; color:$color;'></i>
-                    <button type='button' class='btn-box-tool' onclick=Historial($codigo)><i class='fa-solid fa-wrench' style='padding: 2px;'></i></button>
+                    <button type='button' class='btn-box-tool' data-bs-target='#historialmodal' data-bs-toggle='modal' onclick=Historial($codigo)><i class='fa-solid fa-wrench' style='padding: 2px;'></i></button>
                 </div>
             </td>
             <td class='td-celdas' id='fecha'>" . $data['estado'] . " " . $fechaRentado . "</td>

@@ -232,15 +232,14 @@ cancelar.addEventListener("click", () => {
 });
 
 const historial = document.getElementById("historial");
-const historialVehiculo = document.getElementById("historial-vehiculo");
+const historialVehiculo = document.getElementById("exampleModalLabel");
 function Historial(cod) {
 	historialVehiculo.innerHTML = `Vehiculo: <span class='historial-span'>${cod}</span>`;
-	historial.style.display = "block";
 }
 
-function historialClose() {
-	historial.style.display = "none";
-}
+// function historialClose() {
+// 	historial.style.display = "none";
+// }
 
 function Eliminar(id, cod) {
 	frm.reset();

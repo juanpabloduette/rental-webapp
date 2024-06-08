@@ -25,14 +25,73 @@ if ($varsesion == null || $varsesion = '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APP RENTAL</title>
+    <!-- <link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css"> -->
     <script src="https://kit.fontawesome.com/81e9130226.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="./css.css"> -->
+    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.bootstrap5.css">
     <style>
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+        }
+
+        .acciones-buttons {
+            display: flex;
+        }
+
+        .panel {
+            background-color: #212529;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .panel__top {
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 40px;
+
+        }
+
+        .panel__top p {
+            margin-bottom: 0;
+            padding: 2px;
+        }
+
+        .panel-span {
+            border-radius: 5px;
+            padding: 0px 3px;
+            background-color: chocolate;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 2;
+        }
+
+        .panel_disponibles,
+        .panel_no-disponibles,
+        .panel_rentados {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel-span-1 {
+            background-color: green;
+        }
+
+
+        .panel-span-2 {
+            background-color: red;
+        }
+
+
+        .panel-span-3 {
+            background-color: yellow;
+            color: black;
         }
 
         /* HISTORIAL */
@@ -328,9 +387,20 @@ if ($varsesion == null || $varsesion = '') {
             </div>
         </div>
     </div>
-    <div class="panel">
+    <div class="container panel">
         <div class="panel__top">
-            <p>PANEL DE DATOS</p>
+            <div class="panel_disponibles">
+                <div class="panel-span panel-span-1">Disponibles</div>
+                <p>15</p>
+            </div>
+            <div class="panel_no-disponibles">
+                <div class="panel-span panel-span-2">No disponibles</div>
+                <p>15</p>
+            </div>
+            <div class="panel_rentados">
+                <div class="panel-span panel-span-3">Rentados</div>
+                <p>15</p>
+            </div>
         </div>
     </div>
     <div class="container mt-2">
@@ -538,10 +608,12 @@ if ($varsesion == null || $varsesion = '') {
                         <div class="modal-content bg-dark text-white">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel"> Historial Vehículo Nro.</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div data-bs-theme="dark">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
                             </div>
                             <div class="modal-body">
-                                <table class="table table-hover table-responsive-{576px} table-striped align-middle table-dark table-sm">
+                                <!-- <table class="table table-responsive-{576px} table-striped align-middle table-dark table-sm">
                                     <thead>
                                         <tr>
                                             <th class='td-celdas'><input type="text" class="form-control form-control-sm field-servicio" placeholder="Servicio"></th>
@@ -552,25 +624,142 @@ if ($varsesion == null || $varsesion = '') {
                                             <th class='td-celdas'><input type="text" class="form-control form-control-sm field-notas" placeholder="Notas"></th>
                                             <th class='td-celdas'><button class="btn btn-success btn-block btn-sm">Ingresar</button></th>
                                         </tr>
+                                      
+
+                                </table> -->
+                                <button type="button" class="btn btn-success btn-sm">Agregar +</button>
+                                <!-- Modal agregar va aca -->
+
+                                <table id="example" class="table table-striped table-sm align-middle table-hover" data-bs-theme="dark" style="width: 100%">
+                                    <thead class="table-secondary">
                                         <tr>
-                                            <th class='td-celdas'>Servicio</th>
-                                            <th class='td-celdas'>Fecha</th>
-                                            <th class='td-celdas'>Lugar</th>
-                                            <th class='td-celdas'>Costo</th>
-                                            <th class='td-celdas'>Kms.</th>
-                                            <th class='td-celdas'>Notas</th>
+                                            <th>Fecha</th>
+                                            <th>Servicio</th>
+                                            <th>Lugar</th>
+                                            <th>Costo</th>
+                                            <th>Kms.</th>
+                                            <th>Notas</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody id="service">
+                                    <tbody class="table-group-divider">
                                         <tr>
-                                            <td>Cambio de fluidos</td>
-                                            <td>15-5-2024</td>
-                                            <td>Taller</td>
+                                            <td>2017-02-05</td>
+                                            <td>Velocimetro</td>
+                                            <td>Taller Playa del Carmen</td>
+                                            <td>$350</td>
+                                            <td>5500</td>
+                                            <td>Cambio de tripa</td>
+                                            <td>
+                                                <div class="acciones-buttons">
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2011-06-07</td>
+                                            <td>Cambio de rines</td>
+                                            <td>Taller Tulum</td>
+                                            <td>$2000</td>
+                                            <td>8000</td>
+                                            <td>Rines marca Michelin</td>
+                                            <td>
+                                                <div class="acciones-buttons">
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2011-08-12</td>
+                                            <td>Cambio de mando y switch</td>
+                                            <td>Taller Tulum</td>
+                                            <td>$500</td>
+                                            <td>9900</td>
+                                            <td>Sulfatado por clima</td>
+                                            <td>
+                                                <div class="acciones-buttons">
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-12-11</td>
+                                            <td>Reparacion de asiento</td>
+                                            <td>Casa Racing MX</td>
+                                            <td>$950</td>
+                                            <td>4000</td>
+                                            <td>reparado en Ecocuero</td>
+                                            <td>
+                                                <div class="acciones-buttons">
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2018-08-17</td>
+                                            <td>Reparacion de arranque</td>
+                                            <td>Taller Cancun</td>
+                                            <td>$450</td>
+                                            <td>9500</td>
+                                            <td>accesorio comprado en Cancun</td>
+                                            <td>
+                                                <div class="acciones-buttons">
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2011-04-25</td>
+                                            <td>Cambio de aceite y filtros</td>
+                                            <td>Taller Tulum</td>
+                                            <td>$1500</td>
+                                            <td>6200</td>
+                                            <td>Aceite 700, filtros 800</td>
+                                            <td>
+                                                <div class="acciones-buttons">
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                                                    </div>
+                                                    <div style='position: relative;'>
+                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2011-04-25</td>
+                                            <td>Reparacion de guardabarro</td>
+                                            <td>Taller Cesar</td>
                                             <td>$1000</td>
-                                            <td>6000</td>
-                                            <td>se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>6500</td>
+                                            <td>Repuesto comprado en PDC</td>
                                             <td>
-                                                <div>
+                                                <div class="acciones-buttons">
                                                     <div style='position: relative;'>
                                                         <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
                                                     </div>
@@ -581,14 +770,14 @@ if ($varsesion == null || $varsesion = '') {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Cambio de aros</td>
-                                            <td>15-5-2024</td>
-                                            <td>Taller</td>
-                                            <td>$5000</td>
-                                            <td>7800</td>
-                                            <td>se realizó cambio de aros y pistones</td>
+                                            <td>2011-04-25</td>
+                                            <td>Service general</td>
+                                            <td>Taller Tulum</td>
+                                            <td>$1500</td>
+                                            <td>6200</td>
+                                            <td>Aceite 700, filtros 800</td>
                                             <td>
-                                                <div>
+                                                <div class="acciones-buttons">
                                                     <div style='position: relative;'>
                                                         <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
                                                     </div>
@@ -599,14 +788,14 @@ if ($varsesion == null || $varsesion = '') {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Cambio de fluidos</td>
-                                            <td>15-5-2024</td>
-                                            <td>Taller</td>
-                                            <td>$1000</td>
-                                            <td>6000</td>
-                                            <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>2011-04-25</td>
+                                            <td>Cambio de aceite y filtros</td>
+                                            <td>Taller Tulum</td>
+                                            <td>$1500</td>
+                                            <td>6200</td>
+                                            <td>Aceite 700, filtros 800</td>
                                             <td>
-                                                <div>
+                                                <div class="acciones-buttons">
                                                     <div style='position: relative;'>
                                                         <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
                                                     </div>
@@ -617,14 +806,14 @@ if ($varsesion == null || $varsesion = '') {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Cambio de neumaticos</td>
-                                            <td>15-8-2024</td>
-                                            <td>Taller Oaxaca</td>
-                                            <td>$4500</td>
-                                            <td>6000</td>
-                                            <td>se realizó cambio de rines</td>
+                                            <td>2011-04-25</td>
+                                            <td>Cambio de aceite y filtros</td>
+                                            <td>Taller Tulum</td>
+                                            <td>$1500</td>
+                                            <td>6200</td>
+                                            <td>Aceite 700, filtros 800</td>
                                             <td>
-                                                <div>
+                                                <div class="acciones-buttons">
                                                     <div style='position: relative;'>
                                                         <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
                                                     </div>
@@ -635,14 +824,14 @@ if ($varsesion == null || $varsesion = '') {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Cambio de fluidos</td>
-                                            <td>15-5-2024</td>
-                                            <td>Taller</td>
-                                            <td>$1000</td>
-                                            <td>6000</td>
-                                            <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>2011-04-25</td>
+                                            <td>Cambio de aceite y filtros</td>
+                                            <td>Taller Tulum</td>
+                                            <td>$1500</td>
+                                            <td>6200</td>
+                                            <td>Aceite 700, filtros 800</td>
                                             <td>
-                                                <div>
+                                                <div class="acciones-buttons">
                                                     <div style='position: relative;'>
                                                         <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
                                                     </div>
@@ -653,14 +842,14 @@ if ($varsesion == null || $varsesion = '') {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Cambio de fluidos</td>
-                                            <td>15-5-2024</td>
-                                            <td>Taller</td>
-                                            <td>$1000</td>
-                                            <td>6000</td>
-                                            <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
+                                            <td>2017-08-29</td>
+                                            <td>Reparacion de tablero</td>
+                                            <td>Taller Tulum</td>
+                                            <td>$850</td>
+                                            <td>11500</td>
+                                            <td>Tablero comprado en el centro</td>
                                             <td>
-                                                <div>
+                                                <div class="acciones-buttons">
                                                     <div style='position: relative;'>
                                                         <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
                                                     </div>
@@ -670,25 +859,19 @@ if ($varsesion == null || $varsesion = '') {
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Cambio de fluidos</td>
-                                            <td>15-5-2024</td>
-                                            <td>Taller</td>
-                                            <td>$1000</td>
-                                            <td>6000</td>
-                                            <td>Comentario del vehículo: se realizó cambio de aceite, filtros y ajuste de frenos</td>
-                                            <td>
-                                                <div>
-                                                    <div style='position: relative;'>
-                                                        <button type='button' class='btn btn-warning' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
-                                                    </div>
-                                                    <div style='position: relative;'>
-                                                        <button type='button' class='btn btn-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+
                                     </tbody>
+                                    <!-- <tfoot class="table-secondary">
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Servicio</th>
+                                            <th>Lugar</th>
+                                            <th>Costo</th>
+                                            <th>Kms.</th>
+                                            <th>Notas</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot> -->
                                 </table>
                             </div>
                             <div class="modal-footer">
@@ -700,8 +883,22 @@ if ($varsesion == null || $varsesion = '') {
             </div>
         </div>
     </div>
-    <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="js/luxon.min.js"></script>
+    <!-- <script src="sweetalert2/dist/sweetalert2.min.js"></script> -->
+
+    <script src="js/datatables.min.js"></script>
+    <script src="js/datatable.js"></script>
     <script src="script.js"></script>
 </body>
 

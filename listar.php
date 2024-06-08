@@ -10,21 +10,34 @@ if ($data != "") {
     $consulta = $pdo->prepare("SELECT * FROM productos WHERE codigo LIKE '%" . $data . "%' OR estado LIKE '%" . $data . "%' OR producto LIKE '%" . $data . "%' OR tienda LIKE '%" . $data . "%' ");
     $consulta->execute();
 }
-
 $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
 if (empty($resultado)) {
     echo "<tr>NO HAY RESULTADOS</tr>";
 }
 
+// $disponibles = 0;
+// $nodisponibles = 0;
+// $rentados = 0;
+
 foreach ($resultado as $data) {
     $color = 'green';
     $estado = $data['estado'];
+
+    // if ($estado === 'Disponible') {
+    //     $disponibles += 1;
+    // };
+    // if ($estado === 'Disponible') {
+    //     $nodisponibles += 1;
+    // };
+    // if ($estado === 'Disponible') {
+    //     $rentados += 1;
+    // };
+
     if ($estado == "Rentado") {
         $color = 'yellow';
     } else if ($estado == "No Disp.") {
         $color = 'red';
     };
-
     $fechaParaConvertir = $data['fecha'];
 
     $originalDate = $fechaParaConvertir;

@@ -237,10 +237,6 @@ function Historial(cod) {
 	historialVehiculo.innerHTML = `Vehiculo: <span class='historial-span'>${cod}</span>`;
 }
 
-// function historialClose() {
-// 	historial.style.display = "none";
-// }
-
 function Eliminar(id, cod) {
 	frm.reset();
 	registrar.value = "Ingresar";

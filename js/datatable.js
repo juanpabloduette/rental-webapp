@@ -1,5 +1,12 @@
+let table;
 $(document).ready(function () {
-	var table = $("#example").DataTable({
+	tableExecute();
+	// table.buttons().container().appendTo("#example__wrapper .col-md-6:eq(0)");
+	// table.buttons().container().appendTo("#toolbar");
+});
+
+function tableExecute() {
+	table = $("#example").DataTable({
 		layout: {
 			dom: "Bfrtip",
 			topStart: {
@@ -26,6 +33,14 @@ $(document).ready(function () {
 			},
 		},
 		responsive: true,
+		responsive: {
+			breakpoints: [
+				{ name: "desktop", width: Infinity },
+				{ name: "tablet", width: 1024 },
+				{ name: "fablet", width: 768 },
+				{ name: "phone", width: 480 },
+			],
+		},
 		language: {
 			url: "language/es-MX.json",
 		},
@@ -43,6 +58,4 @@ $(document).ready(function () {
 		],
 		pagingType: "simple_numbers",
 	});
-	// table.buttons().container().appendTo("#example__wrapper .col-md-6:eq(0)");
-	// table.buttons().container().appendTo("#toolbar");
-});
+}

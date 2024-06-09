@@ -231,12 +231,6 @@ cancelar.addEventListener("click", () => {
 	fecha.disabled = true;
 });
 
-const historial = document.getElementById("historial");
-const historialVehiculo = document.getElementById("exampleModalLabel");
-function Historial(cod) {
-	historialVehiculo.innerHTML = `Vehiculo: <span class='historial-span'>${cod}</span>`;
-}
-
 function Eliminar(id, cod) {
 	frm.reset();
 	registrar.value = "Ingresar";

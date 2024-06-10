@@ -5,10 +5,9 @@ $query = $pdo->prepare("SELECT * FROM historial_service WHERE id_vehiculo = :cod
 $query->bindParam(":cod", $data);
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
-
 if (empty($resultado)) {
     echo "<tr>NO HAY RESULTADOS</tr>";
-    // return;
+    return;
 }
 
 foreach ($resultado as $data) {

@@ -31,6 +31,9 @@ if ($varsesion == null || $varsesion = '') {
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.bootstrap5.css">
 
+    <!-- <link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+
     <style>
         * {
             padding: 0;
@@ -192,7 +195,7 @@ if ($varsesion == null || $varsesion = '') {
 
         .menu {
             position: sticky;
-            top: 80px;
+            top: 58px;
         }
 
         .busqueda {
@@ -679,11 +682,12 @@ if ($varsesion == null || $varsesion = '') {
                                             <div class="accordion-body">
                                                 <div class=""></div>
                                                 <form action="" class="form-historial" id="frm-vehiculos" method="POST">
-                                                    <input type="date" class="form-control form-control-sm field-fecha mx-1" id="fecha">
+                                                    <input type="hidden" id="idvehiculo">
+                                                    <input type="date" class="form-control form-control-sm field-fecha mx-1" id="fechahistorial">
                                                     <input type="text" class="form-control form-control-sm field-servicio mx-1" id="servicio" placeholder="Servicio">
                                                     <input type="text" class="form-control form-control-sm field-lugar mx-1" id="lugar" placeholder="Lugar">
                                                     <input type="text" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo">
-                                                    <input type="text" class="form-control form-control-sm field-kms mx-1" id="kms" placeholder="Kms.">
+                                                    <input type="text" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms.">
                                                     <input type="text" class="form-control form-control-sm field-notas mx-1" id="nota" placeholder="Notas">
                                                     <button class="btn btn-success btn-block btn-sm mx-1" id="historial-vehiculos">Ingresar</button>
                                                 </form>
@@ -729,8 +733,9 @@ if ($varsesion == null || $varsesion = '') {
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Sweet Alert 2 -->
-    <!-- <script src="sweetalert2/dist/sweetalert2.min.js"></script> TRAE conflicos  -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -740,6 +745,7 @@ if ($varsesion == null || $varsesion = '') {
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>

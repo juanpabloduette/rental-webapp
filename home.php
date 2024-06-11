@@ -136,13 +136,13 @@ if ($varsesion == null || $varsesion = '') {
 
         /* HISTORIAL */
 
+        .btn-form-historial-cancelar {
+            display: none;
+        }
+
         .form-historial {
             display: flex;
             width: 100%;
-            /* display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            grid-auto-rows: 1fr;
-            gap: 0px; */
         }
 
         .form-historial-bloque1 {
@@ -721,7 +721,7 @@ if ($varsesion == null || $varsesion = '') {
                                 <div class="accordion py-1 accordion-flush accordion-dark accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
-                                            <button class="accordion-button btn-sm collapsed custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            <button class="accordion-button btn-sm collapsed custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id="btn-accordion-historial">
                                                 Agregar registro +
                                             </button>
                                         </h2>
@@ -742,6 +742,7 @@ if ($varsesion == null || $varsesion = '') {
                                                         <input type="text" class="form-control form-control-sm field-notas mx-1" id="nota" placeholder="Notas (Opcional)">
                                                     </div>
                                                     <button class="btn btn-success btn-block btn-sm btn-form-historial mx-1" id="historial-vehiculos">Ingresar</button>
+                                                    <button class="btn btn-primary btn-block btn-sm btn-form-historial-cancelar mx-1" id="historial-vehiculos-cancelar">Cancelar</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -784,8 +785,6 @@ if ($varsesion == null || $varsesion = '') {
             </div>
         </div>
     </div>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 

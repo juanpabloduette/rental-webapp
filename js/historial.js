@@ -22,6 +22,11 @@ const validarHistorial = {
 historialVehiculos.addEventListener("click", (e) => {
 	e.preventDefault();
 	validacionHistorial();
+	if (historialVehiculos.textContent === "Actualizar") {
+		historialVehiculos.textContent = "Ingresar";
+	}
+	editarHistorialCancelar.style.display = "none";
+	btnAccordionHistorial.textContent = "Ingresar registro +";
 	console.log(idPrimary);
 	if (
 		validarHistorial.campoFecha &&
@@ -64,6 +69,9 @@ historialVehiculos.addEventListener("click", (e) => {
 						timer: 950,
 					});
 					listarhistorial((id = undefined), (cod = idv.value));
+					idPrimary.value = ""; // deja vacio el campo despues de actualizar, por que frmVehiculos.reset(); no lo hace?
+					idv.value = "";
+					// console.log(idv.value);
 					frmVehiculos.reset();
 				}
 			})

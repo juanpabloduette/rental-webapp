@@ -47,10 +47,10 @@ function tableExecute() {
 				orderable: false,
 				targets: [6],
 			},
-			{
-				targets: 0,
-				render: DataTable.render.datetime("d MMM yyyy", "MMM d, yy", "en"),
-			},
+			// {
+			// 	targets: 0,
+			// 	render: DataTable.render.datetime("d MMM yyyy", "MMM d, yy", "en"),
+			// },
 			{ responsivePriority: 1, targets: 6 },
 			{ responsivePriority: 2, targets: 1 },
 		],

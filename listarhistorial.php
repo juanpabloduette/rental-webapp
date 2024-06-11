@@ -11,28 +11,33 @@ if (empty($resultado)) {
 }
 
 foreach ($resultado as $data) {
+    $id = $data['id'];
     $cod = $data['id_vehiculo'];
-    $fecha = $data['fecha'];
+    $fechaParaConvertir = $data['fecha'];
     $servicio = $data['servicio'];
     $lugar = $data['lugar'];
     $costo = $data['costo'];
     $kms = $data['kilometros'];
     $nota = $data['notas'];
 
+    $originalDate = $fechaParaConvertir;
+    $newDate = date("d-m-Y", strtotime($originalDate));
+
+
     echo "<tr>
-            <td>$fecha</td>
+            <td>$newDate</td>
             <td>$servicio</td>
             <td>$lugar</td>
-            <td>$costo</td>
+            <td>$$costo</td>
             <td>$kms</td>
             <td>$nota</td>
             <td>
                 <div class='acciones-buttons'>
                     <div style='position: relative;'>
-                        <button type='button' class='btn btn-warning btn-box-comment' aria-label='Editar' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
+                        <button type='button' class='btn btn-warning btn-box-comment' aria-label='Editar' onclick='editarIdHistorial($id)' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
                     </div>
                     <div style='position: relative;'>
-                        <button type='button' class='btn btn-danger btn-box-danger' aria-label='Borrar' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                        <button type='button' class='btn btn-danger btn-box-danger' aria-label='Borrar' onclick='borrarIdHistorial($id)' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
                     </div>
                 </div>
             </td>

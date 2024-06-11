@@ -25,13 +25,12 @@ if ($varsesion == null || $varsesion = '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APP RENTAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/81e9130226.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/datatables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.bootstrap5.css">
-
-    <!-- <link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
     <style>
@@ -39,15 +38,11 @@ if ($varsesion == null || $varsesion = '') {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
         }
 
         .acciones-buttons {
             display: flex;
-        }
-
-        .form-historial {
-            display: flex;
-            width: 100%;
         }
 
         .accordion-dark .accordion-item {
@@ -141,16 +136,36 @@ if ($varsesion == null || $varsesion = '') {
 
         /* HISTORIAL */
 
-        .field-servicio {
-            max-width: 180px;
+        .form-historial {
+            display: flex;
+            width: 100%;
+            /* display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-auto-rows: 1fr;
+            gap: 0px; */
         }
 
-        .field-lugar {
-            max-width: 140px;
+        .form-historial-bloque1 {
+            display: flex;
+            width: 100%;
         }
+
+        .form-historial-bloque2 {
+            display: flex;
+            width: 100%;
+        }
+
+        .field-servicio {
+            max-width: 220px;
+        }
+
+        /* 
+        .field-lugar {
+            max-width: 160px;
+        } */
 
         .field-fecha {
-            max-width: 120px;
+            max-width: 140px;
         }
 
         .field-costo {
@@ -159,6 +174,38 @@ if ($varsesion == null || $varsesion = '') {
 
         .field-kms {
             max-width: 80px;
+        }
+
+        @media (max-width: 992px) {
+            .form-historial {
+                flex-direction: column;
+            }
+
+            .field-servicio,
+            .field-fecha,
+            .field-lugar,
+            .field-costo,
+            .field-kms,
+            .field-notas,
+            .btn-form-historial {
+                margin: 3px 0px;
+            }
+
+            .acciones-buttons {
+                flex-direction: column;
+            }
+
+
+        }
+
+        @media (max-width: 450px) {
+            .form-historial-bloque1 {
+                flex-direction: column;
+            }
+
+            .form-historial-bloque2 {
+                flex-direction: column;
+            }
         }
 
         /* FIN DE HISTORIAL */
@@ -682,14 +729,19 @@ if ($varsesion == null || $varsesion = '') {
                                             <div class="accordion-body">
                                                 <div class=""></div>
                                                 <form action="" class="form-historial" id="frm-vehiculos" method="POST">
-                                                    <input type="hidden" id="idvehiculo">
-                                                    <input type="date" class="form-control form-control-sm field-fecha mx-1" id="fechahistorial">
-                                                    <input type="text" class="form-control form-control-sm field-servicio mx-1" id="servicio" placeholder="Servicio">
-                                                    <input type="text" class="form-control form-control-sm field-lugar mx-1" id="lugar" placeholder="Lugar">
-                                                    <input type="text" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo">
-                                                    <input type="text" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms.">
-                                                    <input type="text" class="form-control form-control-sm field-notas mx-1" id="nota" placeholder="Notas">
-                                                    <button class="btn btn-success btn-block btn-sm mx-1" id="historial-vehiculos">Ingresar</button>
+                                                    <div class="form-historial-bloque1">
+                                                        <input type="hidden" id="idprimary">
+                                                        <input type="hidden" id="idvehiculo">
+                                                        <input type="date" class="form-control form-control-sm field-fecha mx-1" id="fechahistorial">
+                                                        <input type="text" class="form-control form-control-sm field-servicio mx-1" id="servicio" placeholder="Servicio">
+                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="lugar" placeholder="Lugar">
+                                                    </div>
+                                                    <div class="form-historial-bloque2">
+                                                        <input type="text" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo">
+                                                        <input type="text" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms.">
+                                                        <input type="text" class="form-control form-control-sm field-notas mx-1" id="nota" placeholder="Notas (Opcional)">
+                                                    </div>
+                                                    <button class="btn btn-success btn-block btn-sm btn-form-historial mx-1" id="historial-vehiculos">Ingresar</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -756,6 +808,8 @@ if ($varsesion == null || $varsesion = '') {
     <script src="script.js"></script>
     <script src="js/historial.js"></script>
     <script src="js/listarhistorial.js"></script>
+    <script src="js/borraridhistorial.js"></script>
+    <script src="js/editarhistorial.js"></script>
 </body>
 
 </html>

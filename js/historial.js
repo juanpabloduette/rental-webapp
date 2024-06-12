@@ -22,11 +22,7 @@ const validarHistorial = {
 historialVehiculos.addEventListener("click", (e) => {
 	e.preventDefault();
 	validacionHistorial();
-	if (historialVehiculos.textContent === "Actualizar") {
-		historialVehiculos.textContent = "Ingresar";
-	}
-	editarHistorialCancelar.style.display = "none";
-	btnAccordionHistorial.textContent = "Ingresar registro +";
+	//aca iria el bloque que esta antes del fech, chequear si funciona todo bien así
 	console.log(idPrimary);
 	if (
 		validarHistorial.campoFecha &&
@@ -35,6 +31,11 @@ historialVehiculos.addEventListener("click", (e) => {
 		validarHistorial.campoCosto &&
 		validarHistorial.campoKilometros
 	) {
+		if (historialVehiculos.textContent === "Actualizar") {
+			historialVehiculos.textContent = "Ingresar";
+		}
+		editarHistorialCancelar.style.display = "none";
+		btnAccordionHistorial.textContent = "Ingresar registro +";
 		fetch("ingresarhistorial.php", {
 			method: "POST",
 			body: new URLSearchParams({
@@ -69,9 +70,12 @@ historialVehiculos.addEventListener("click", (e) => {
 						timer: 950,
 					});
 					listarhistorial((id = undefined), (cod = idv.value));
-					idPrimary.value = ""; // deja vacio el campo despues de actualizar, por que frmVehiculos.reset(); no lo hace?
+					idPrimary.value = "";
 					idv.value = "";
 					// console.log(idv.value);
+					historialVehiculos.classList.remove("btn-warning");
+					btnAccordionHistorial.style.backgroundColor = "#495057";
+					btnAccordionHistorial.style.color = "#FFFFFF";
 					frmVehiculos.reset();
 				}
 			})
@@ -131,6 +135,7 @@ function validacionHistorial() {
 			showConfirmButton: true,
 			// timer: 1100
 		});
+		return (validarHistorial.campoCosto = false);
 	} else {
 		validarHistorial.campoCosto = true;
 	}

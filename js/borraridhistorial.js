@@ -26,8 +26,11 @@ function borrarIdHistorial(id) {
 							timer: 950,
 						});
 						listarhistorial((id = undefined), (cod = idv.value));
+						cancelarActualizar();
 					}
 				});
+		} else {
+			cancelarActualizar();
 		}
 	});
 }

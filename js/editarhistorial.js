@@ -6,40 +6,72 @@ const btnAccordionHistorial = document.getElementById(
 	"btn-accordion-historial"
 );
 
+const buttonModalClose = document.getElementById("button-modal-close");
+
+buttonModalClose.addEventListener("click", () => {
+	cancelarActualizar();
+	idv.value = "";
+});
+
+const buttonModalCloseFooter = document.getElementById(
+	"button-modal-close-footer"
+);
+
+buttonModalCloseFooter.addEventListener("click", () => {
+	cancelarActualizar();
+	idv.value = "";
+});
+
 function openAccordion() {
 	const collapseElement = document.getElementById("flush-collapseOne");
-	const buttonElement = document.getElementById("btn-accordion-historial");
-
 	// Add the 'show' class to open the collapse
 	collapseElement.classList.add("show");
 	// Remove the 'collapsed' class from the button
-	buttonElement.classList.remove("collapsed");
+	btnAccordionHistorial.classList.remove("collapsed");
 	// Set aria-expanded to true
-	buttonElement.setAttribute("aria-expanded", "true");
+	btnAccordionHistorial.setAttribute("aria-expanded", "true");
 }
 
 function closeAccordion() {
 	const collapseElement = document.getElementById("flush-collapseOne");
-	const buttonElement = document.getElementById("btn-accordion-historial");
-
 	// Remove the 'show' class to close the collapse
 	collapseElement.classList.remove("show");
 	// Add the 'collapsed' class to the button
-	buttonElement.classList.add("collapsed");
+	btnAccordionHistorial.classList.add("collapsed");
 	// Set aria-expanded to false
-	buttonElement.setAttribute("aria-expanded", "false");
+	btnAccordionHistorial.setAttribute("aria-expanded", "false");
 }
 
 editarHistorialCancelar.addEventListener("click", (e) => {
 	e.preventDefault();
+	cancelarActualizar();
+});
+
+function cancelarActualizar() {
 	historialVehiculos.textContent = "Ingresar";
+	historialVehiculos.classList.remove("btn-warning");
+	btnAccordionHistorial.style.backgroundColor = "#495057";
+	btnAccordionHistorial.style.color = "#FFFFFF";
 	btnAccordionHistorial.textContent = "Ingresar registro +";
 	editarHistorialCancelar.style.display = "none";
+	console.log("id primary " + idPrimary.value);
+	console.log("idv " + idv.value);
+
 	idPrimary.value = "";
-	idv.value = "";
+	// idv.value = "";
+	console.log("id primary " + idPrimary.value);
+	console.log("idv " + idv.value);
 	frmVehiculos.reset();
 	closeAccordion();
-});
+}
+
+function irAlTop() {
+	const modalBody = document.querySelector(".modal-body");
+	modalBody.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
+}
 
 function editarIdHistorial(id) {
 	fetch("editarhistorial.php", {
@@ -59,8 +91,12 @@ function editarIdHistorial(id) {
 			nota.value = response.notas;
 
 			openAccordion();
+			irAlTop();
 			btnAccordionHistorial.textContent = "Actualizar registro +";
+			btnAccordionHistorial.style.backgroundColor = "rgb(255, 193, 7)";
+			btnAccordionHistorial.style.color = "black";
 			historialVehiculos.textContent = "Actualizar";
+			historialVehiculos.classList.add("btn-warning");
 			editarHistorialCancelar.style.display = "block";
 
 			// registrar.value = "Actualizar";

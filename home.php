@@ -41,8 +41,19 @@ if ($varsesion == null || $varsesion = '') {
             font-family: "Poppins", sans-serif;
         }
 
+        .buttons-excel,
+        .buttons-pdf,
+        .buttons-print {
+            background-color: #343a40;
+        }
+
         .acciones-buttons {
             display: flex;
+        }
+
+        .label-input {
+            display: flex;
+            flex-direction: column;
         }
 
         .accordion-dark .accordion-item {
@@ -194,8 +205,6 @@ if ($varsesion == null || $varsesion = '') {
             .acciones-buttons {
                 flex-direction: column;
             }
-
-
         }
 
         @media (max-width: 450px) {
@@ -513,7 +522,7 @@ if ($varsesion == null || $varsesion = '') {
             <div class="col-lg-4 menu" id="menu">
                 <div class="card">
                     <div class="card-header bg-dark" id="card-header" style="color: white; ">
-                        <h3 class="text-center" id="cardtitle">Ingresar vehículo</h3>
+                        <h3 class="text-center mb-0" id="cardtitle">Ingresar vehículo</h3>
                     </div>
                     <div class="card-body">
                         <form action="" method="POST" id="frm">
@@ -660,10 +669,10 @@ if ($varsesion == null || $varsesion = '') {
                             </div>
                             <div style="display: flex; justify-content: space-between; margin: 5px 0">
                                 <div class="form-group">
-                                    <input type="button" value="Ingresar" id="registrar" class="btn btn-dark btn-block">
+                                    <input type="button" value="Ingresar" id="registrar" class="btn btn-success btn-block">
                                 </div>
                                 <div class="form-group">
-                                    <input type="button" value="Cancelar" id="cancelar" class="btn btn-primary btn-block" style="display:none;">
+                                    <input type="button" value="Cancelar" id="cancelar" class="btn btn-danger btn-block" style="display:none;">
                                 </div>
                             </div>
                         </form>
@@ -714,7 +723,7 @@ if ($varsesion == null || $varsesion = '') {
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel"> Historial Vehículo Nro.</h5>
                                 <div data-bs-theme="dark">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button-modal-close"></button>
                                 </div>
                             </div>
                             <div class="modal-body">
@@ -732,17 +741,35 @@ if ($varsesion == null || $varsesion = '') {
                                                     <div class="form-historial-bloque1">
                                                         <input type="hidden" id="idprimary">
                                                         <input type="hidden" id="idvehiculo">
-                                                        <input type="date" class="form-control form-control-sm field-fecha mx-1" id="fechahistorial">
-                                                        <input type="text" class="form-control form-control-sm field-servicio mx-1" id="servicio" placeholder="Servicio">
-                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="lugar" placeholder="Lugar">
+                                                        <div class="label-input">
+                                                            <label for="fechahistorial">Fecha</label>
+                                                            <input type="date" class="form-control form-control-sm field-fecha mx-1" id="fechahistorial" autocomplete="off">
+                                                        </div>
+                                                        <div class="label-input">
+                                                            <label for="servicio">Servicio</label>
+                                                            <input type="text" class="form-control form-control-sm field-servicio mx-1" id="servicio" placeholder="Servicio" autocomplete="off">
+                                                        </div>
+                                                        <div class="label-input">
+                                                            <label for="lugar">Lugar</label>
+                                                            <input type="text" class="form-control form-control-sm field-lugar mx-1" id="lugar" placeholder="Lugar" autocomplete="off">
+                                                        </div>
                                                     </div>
                                                     <div class="form-historial-bloque2">
-                                                        <input type="text" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo">
-                                                        <input type="text" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms.">
-                                                        <input type="text" class="form-control form-control-sm field-notas mx-1" id="nota" placeholder="Notas (Opcional)">
+                                                        <div class="label-input">
+                                                            <label for="costo">Costo</label>
+                                                            <input type="text" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo" autocomplete="off">
+                                                        </div>
+                                                        <div class="label-input">
+                                                            <label for="kilometros">Kilometros</label>
+                                                            <input type="text" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms." autocomplete="off">
+                                                        </div>
+                                                        <div class="label-input">
+                                                            <label for="nota">Notas</label>
+                                                            <input type="text" class="form-control form-control-sm field-notas mx-1" id="nota" placeholder="Notas (Opcional)" autocomplete="off">
+                                                        </div>
                                                     </div>
                                                     <button class="btn btn-success btn-block btn-sm btn-form-historial mx-1" id="historial-vehiculos">Ingresar</button>
-                                                    <button class="btn btn-primary btn-block btn-sm btn-form-historial-cancelar mx-1" id="historial-vehiculos-cancelar">Cancelar</button>
+                                                    <button class="btn btn-danger btn-block btn-sm btn-form-historial-cancelar mx-1" id="historial-vehiculos-cancelar">Cancelar</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -777,7 +804,7 @@ if ($varsesion == null || $varsesion = '') {
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="button-modal-close-footer">Cerrar</button>
                             </div>
                         </div>
                     </div>

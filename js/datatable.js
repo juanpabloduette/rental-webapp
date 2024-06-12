@@ -56,7 +56,4 @@ function tableExecute() {
 		],
 		pagingType: "simple_numbers",
 	});
-
-	// table.buttons().container().appendTo("#example__wrapper .col-md-6:eq(0)");
-	// table.buttons().container().appendTo("#toolbar");
 }

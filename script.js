@@ -239,7 +239,6 @@ function Eliminar(id, cod) {
 
 	borrarBusqueda.style.display = "none"; //borra cerrar de busqueda
 	buscar.value = ""; //borra campo de busqueda
-
 	Swal.fire({
 		title: "Esta seguro de eliminar el registro N° " + cod + " ?",
 		// text: "No podra volver atras",

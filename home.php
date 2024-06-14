@@ -396,6 +396,7 @@ if ($varsesion == null || $varsesion = '') {
             content: "Editar";
             color: black;
             font-size: 13px;
+            padding-top: 1px;
             background-color: white;
             position: absolute;
             right: 16px;
@@ -412,6 +413,7 @@ if ($varsesion == null || $varsesion = '') {
             content: "Borrar";
             color: black;
             font-size: 13px;
+            padding-top: 1px;
             background-color: white;
             position: absolute;
             right: 16px;
@@ -470,13 +472,14 @@ if ($varsesion == null || $varsesion = '') {
         .btn-box-tool:hover::before {
             content: "Historial";
             color: black;
-            font-size: 12px;
+            font-size: 13px;
+            padding-top: 1px;
             background-color: white;
             position: absolute;
             left: 15px;
             top: -20px;
             height: 30px;
-            width: 55px;
+            width: 65px;
             border: 5px solid transparent;
             border-radius: 5px;
             box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.60);

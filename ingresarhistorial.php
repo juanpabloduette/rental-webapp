@@ -16,16 +16,19 @@ $cons->bindParam(":idp", $idprimary);
 $cons->execute();
 $resultado = $cons->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($resultado as $data) {
-    $idv_db = $data['id_vehiculo'];
-    $fecha_db = $data['fecha'];
-    $servicio_db = $data['servicio'];
-    $lugar_db = $data['lugar'];
-    $costo_db = $data['costo'];
-    $kilometros_db = $data['kilometros'];
-    $nota_db = $data['notas'];
-};
+
 if (!empty($idprimary)) {
+
+    foreach ($resultado as $data) {
+        $idv_db = $data['id_vehiculo'];
+        $fecha_db = $data['fecha'];
+        $servicio_db = $data['servicio'];
+        $lugar_db = $data['lugar'];
+        $costo_db = $data['costo'];
+        $kilometros_db = $data['kilometros'];
+        $nota_db = $data['notas'];
+    };
+
     if ($fecha === $fecha_db && $servicio === $servicio_db && $lugar === $lugar_db && $costo == $costo_db && $kilometros == $kilometros_db && $nota === $nota_db) {
         echo "sinmodif";
         die(); // SEGUN CHAT GPT, CON UN RETURN SOLAMENTE SALE DEL IF NO?

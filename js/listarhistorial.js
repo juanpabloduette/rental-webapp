@@ -4,6 +4,7 @@ const idVehiculo = document.getElementById("idvehiculo");
 
 function listarhistorial(id, cod) {
 	historialVehiculo.innerHTML = `Vehiculo: <span class='historial-span'>${cod}</span>`;
+	document.title = `APP RENTAL - Vehiculo ${cod}`;
 
 	fetch("listarhistorial.php", {
 		method: "POST",

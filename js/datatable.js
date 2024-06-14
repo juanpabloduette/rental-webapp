@@ -31,14 +31,6 @@ function tableExecute() {
 			},
 		},
 		responsive: true,
-		responsive: {
-			breakpoints: [
-				{ name: "desktop", width: Infinity },
-				{ name: "tablet", width: 1024 },
-				{ name: "fablet", width: 768 },
-				{ name: "phone", width: 480 },
-			],
-		},
 		language: {
 			url: "language/es-MX.json",
 		},
@@ -47,13 +39,36 @@ function tableExecute() {
 				orderable: false,
 				targets: [6],
 			},
-			// {
-			// 	targets: 0,
-			// 	render: DataTable.render.datetime("d MMM yyyy", "MMM d, yy", "en"),
-			// },
 			{ responsivePriority: 1, targets: 6 },
 			{ responsivePriority: 2, targets: 1 },
 		],
 		pagingType: "simple_numbers",
+	});
+	// $("#historialmodal").on("shown.bs.modal", function () {
+	// 	table.columns.adjust().responsive.recalc();
+	// });
+	// $("#historialmodal").on("shown.bs.modal", function () {
+	// 	if (table && table.columns) {
+	// 		table.columns.adjust().responsive.recalc();
+	// 	}
+	// });
+	$("#historialmodal").on("shown.bs.modal", function () {
+		try {
+			if (table && table.columns && typeof table.columns.adjust === "function") {
+				table.columns.adjust();
+			}
+			if (
+				table &&
+				table.responsive &&
+				typeof table.responsive.recalc === "function"
+			) {
+				table.responsive.recalc();
+			}
+		} catch (error) {
+			console.error(
+				"Error adjusting table columns or recalculating responsiveness:",
+				error
+			);
+		}
 	});
 }

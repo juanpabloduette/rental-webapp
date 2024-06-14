@@ -152,12 +152,6 @@ registrar.addEventListener("click", () => {
 		//   console.log(name, value);
 		// }
 
-		// Cuando ingresa un nuevo vehiculo y pasa la validacion o cuando se actualiza un vehiculo
-		// alert("entra campos completos registrar o actualizar y bloquea el campo Codigo")
-		// if(registrar.value == "Actualizar"){
-		//   codigo.disabled = true;
-		// };
-
 		fetch("registrar.php", {
 			method: "POST",
 			body: new URLSearchParams({

@@ -10,6 +10,7 @@ const buttonModalClose = document.getElementById("button-modal-close");
 
 buttonModalClose.addEventListener("click", () => {
 	cancelarActualizar();
+	document.title = `APP RENTAL`;
 	idv.value = "";
 });
 
@@ -19,6 +20,7 @@ const buttonModalCloseFooter = document.getElementById(
 
 buttonModalCloseFooter.addEventListener("click", () => {
 	cancelarActualizar();
+	document.title = `APP RENTAL`;
 	idv.value = "";
 });
 
@@ -50,7 +52,7 @@ editarHistorialCancelar.addEventListener("click", (e) => {
 function cancelarActualizar() {
 	historialVehiculos.textContent = "Ingresar";
 	historialVehiculos.classList.remove("btn-warning");
-	btnAccordionHistorial.style.backgroundColor = "#495057";
+	btnAccordionHistorial.style.backgroundColor = "#343A40";
 	btnAccordionHistorial.style.color = "#FFFFFF";
 	btnAccordionHistorial.textContent = "Ingresar registro +";
 	editarHistorialCancelar.style.display = "none";

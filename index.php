@@ -56,13 +56,14 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            flex-direction: column;
             /* background-color: grey; */
         }
 
         .box-form {
             padding: 20px;
             background-color: #212529;
-            border-radius: 15px;
+            border-radius: 10px;
         }
 
         .box-form h3 {
@@ -121,7 +122,7 @@
                                 <i class="fa-solid fa-user"></i>
                             </div>
                             <!-- <label for="usuario">Usuario</label> -->
-                            <input type="text" name="usuario" placeholder="Usuario" class="form-control input-login" id="usuario">
+                            <input type="text" name="usuario" placeholder="Usuario" class="form-control input-login" id="usuario" autocomplete="off">
                         </div>
                         <div class="input">
                             <!-- <label for="password">Contraseña</label> -->
@@ -138,8 +139,11 @@
                         <div id="alert"></div>
                     </form>
                 </div>
+                <p>Admin Rental</p>
             </div>
+
         </div>
+
         <div class="col-1"></div>
 
     </div>

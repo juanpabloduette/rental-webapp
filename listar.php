@@ -32,7 +32,7 @@ foreach ($resultado as $data) {
     // print_r($newDate);
 
     if ($estado == "Rentado") {
-        $fechaRentado = "<span>al " . $newDate . "</span>";
+        $fechaRentado = "al <span style='display: inline-block;'>" . $newDate . "</span>";
     } else {
         $fechaRentado = '';
     };
@@ -42,7 +42,7 @@ foreach ($resultado as $data) {
     echo "<tr>
             <td class='td-celdas'>" . $data['codigo'] . "</td>
             <td class='td-color'>
-                <div class='td-display' style='display: flex; justify-content: center; align-items: center; flex-direction: column; position: relative; padding: 2px 0;'>
+                <div class='td-display' style='display: flex; justify-content: center; align-items: center; flex-direction: column; position: relative; padding: 2px 2px;'>
                     <i class='fa-solid fa-circle' style='font-size: 11px; margin: 2px; color:$color;'></i>
                     <button type='button' class='btn-box-tool' data-bs-target='#historialmodal' data-bs-toggle='modal' onclick=listarhistorial($id,$codigo)><i class='fa-solid fa-wrench' style='padding: 2px;'></i></button>
                 </div>

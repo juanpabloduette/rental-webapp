@@ -23,19 +23,17 @@ historialVehiculos.addEventListener("click", (e) => {
 	e.preventDefault();
 	validacionHistorial();
 	//aca iria el bloque que esta antes del fech, chequear si funciona todo bien así
-	console.log(idPrimary);
+	// console.log(idPrimary.value);
 	if (
 		validarHistorial.campoFecha &&
 		validarHistorial.campoServicio &&
 		validarHistorial.campoLugar &&
 		validarHistorial.campoCosto &&
 		validarHistorial.campoKilometros
+
+		//hay que validar si esta todo repetido que no siga
 	) {
-		if (historialVehiculos.textContent === "Actualizar") {
-			historialVehiculos.textContent = "Ingresar";
-		}
-		editarHistorialCancelar.style.display = "none";
-		btnAccordionHistorial.textContent = "Ingresar registro +";
+		console.log(idPrimary);
 		fetch("ingresarhistorial.php", {
 			method: "POST",
 			body: new URLSearchParams({
@@ -52,16 +50,23 @@ historialVehiculos.addEventListener("click", (e) => {
 			.then((response) => response.text())
 			.then((response) => {
 				console.log(response);
-				if (response === "ingresado") {
+				if (response === "sinmodif") {
+					Swal.fire({
+						icon: "error",
+						title: "Realice un cambio para actualizar el servicio",
+						showConfirmButton: true,
+						// timer: 1100
+					});
+					return;
+				} else if (response === "ingresado") {
 					Swal.fire({
 						icon: "success",
 						title: "Ingresado",
 						showConfirmButton: false,
 						timer: 950,
 					});
-
-					listarhistorial((id = undefined), (cod = idv.value));
-					frmVehiculos.reset();
+					deActualizarAIngresar();
+					return;
 				} else if (response === "actualizado") {
 					Swal.fire({
 						icon: "success",
@@ -69,19 +74,28 @@ historialVehiculos.addEventListener("click", (e) => {
 						showConfirmButton: false,
 						timer: 950,
 					});
-					listarhistorial((id = undefined), (cod = idv.value));
+					deActualizarAIngresar();
 					idPrimary.value = "";
 					idv.value = "";
-					// console.log(idv.value);
 					historialVehiculos.classList.remove("btn-warning");
 					btnAccordionHistorial.style.backgroundColor = "#495057";
 					btnAccordionHistorial.style.color = "#FFFFFF";
-					frmVehiculos.reset();
+					return;
 				}
 			})
 			.catch((error) => console.error("Error:", error));
 	}
 });
+
+function deActualizarAIngresar() {
+	if (historialVehiculos.textContent === "Actualizar") {
+		historialVehiculos.textContent = "Ingresar";
+	}
+	editarHistorialCancelar.style.display = "none";
+	btnAccordionHistorial.textContent = "Ingresar registro +";
+	listarhistorial((id = undefined), (cod = idv.value));
+	frmVehiculos.reset();
+}
 
 function validacionHistorial() {
 	if (fechaHistorial.value === "") {

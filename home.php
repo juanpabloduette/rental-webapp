@@ -41,6 +41,45 @@ if ($varsesion == null || $varsesion = '') {
             font-family: "Poppins", sans-serif;
         }
 
+
+        /* DATATABLE */
+        /* Estilos para la paginación activa */
+        .pagination .page-item.active .page-link {
+            background-color: #343A40;
+            /* Color de fondo del botón activo */
+            border-color: #343A40;
+            /* Color del borde del botón activo */
+            color: #ffffff;
+            /* Color del texto del botón activo */
+        }
+
+        /* Opcional: Estilos para el hover de la paginación */
+        .pagination .page-item:hover .page-link {
+            background-color: #495057;
+            /* Color de fondo en hover */
+            border-color: #495057;
+            /* Color del borde en hover */
+            color: #ffffff;
+            /* Color del texto en hover */
+        }
+
+        .pagination .page-item .page-link {
+            /* background-color: #343A40; */
+            /* Color de fondo del botón activo */
+            /* border-color: #343A40; */
+            /* Color del borde del botón activo */
+            color: #495057;
+            /* Color del texto del botón activo */
+        }
+
+        .pagination .page-item .page-link:focus {
+            background-color: #343A40;
+            border-color: #343A40;
+            color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.5);
+            /* Sombra para indicar el foco */
+        }
+
         .buttons-excel,
         .buttons-pdf,
         .buttons-print {
@@ -55,6 +94,18 @@ if ($varsesion == null || $varsesion = '') {
             display: flex;
             flex-direction: column;
         }
+
+        /* #btn-accordion-historial {
+            background-color: #343a40;
+        } */
+
+        #button-modal-close-footer {
+            background-color: #212529;
+        }
+
+        /* #button-modal-close-footer:hover {
+            background-color: #343a40;
+        } */
 
         .accordion-dark .accordion-item {
             background-color: #343a40;
@@ -76,10 +127,10 @@ if ($varsesion == null || $varsesion = '') {
             filter: invert(1);
         }
 
-        .accordion-dark .accordion-body {
+        /* .accordion-dark .accordion-body {
             background-color: #343a40;
             color: #fff;
-        }
+        } */
 
         .accordion-button.custom:focus {
             box-shadow: none;
@@ -87,6 +138,9 @@ if ($varsesion == null || $varsesion = '') {
             border-color: transparent;
             /* Asegura que el borde no aparezca */
         }
+
+        /* FIN DATATABLE */
+        /*  PANEL */
 
         .panel {
             background-color: #212529;
@@ -103,7 +157,6 @@ if ($varsesion == null || $varsesion = '') {
             justify-content: space-around;
             align-items: center;
             height: 40px;
-
         }
 
         .panel__top p {
@@ -145,6 +198,8 @@ if ($varsesion == null || $varsesion = '') {
             color: black;
         }
 
+        /*  FIN DE PANEL */
+
         /* HISTORIAL */
 
         .btn-form-historial-cancelar {
@@ -176,7 +231,7 @@ if ($varsesion == null || $varsesion = '') {
         } */
 
         .field-fecha {
-            max-width: 140px;
+            max-width: 130px;
         }
 
         .field-costo {
@@ -290,6 +345,19 @@ if ($varsesion == null || $varsesion = '') {
         .cerrar-descripcion:hover {
             background-color: #e9ecef;
             padding: 2px 4px;
+        }
+
+        .card-body {
+            background-color: #343A40;
+        }
+
+        .card-body label {
+            color: #FFFFFF;
+            font-weight: 300;
+        }
+
+        .card-body ::placeholder {
+            color: #343A40;
         }
 
         .bars__menu {
@@ -528,7 +596,7 @@ if ($varsesion == null || $varsesion = '') {
                         <form action="" method="POST" id="frm">
                             <div class="form-group my-1">
                                 <label for="codigo">Número</label>
-                                <input type="hidden" name="idp" id="idp" value="">
+                                <input type="hidden" name="idp" id="idp">
                                 <select name="codigo" id="codigo" class="form-select">
                                     <option value=""></option>
                                     <option value="1">1</option>

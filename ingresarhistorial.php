@@ -25,11 +25,13 @@ foreach ($resultado as $data) {
     $kilometros_db = $data['kilometros'];
     $nota_db = $data['notas'];
 };
-
-if ($fecha === $fecha_db && $servicio === $servicio_db && $lugar === $lugar_db && $costo == $costo_db && $kilometros == $kilometros_db && $nota === $nota_db) {
-    echo "sinmodif";
-    die(); // SEGUN CHAT GPT, CON UN RETURN SOLAMENTE SALE DEL IF NO?
+if (!empty($idprimary)) {
+    if ($fecha === $fecha_db && $servicio === $servicio_db && $lugar === $lugar_db && $costo == $costo_db && $kilometros == $kilometros_db && $nota === $nota_db) {
+        echo "sinmodif";
+        die(); // SEGUN CHAT GPT, CON UN RETURN SOLAMENTE SALE DEL IF NO?
+    };
 };
+
 
 if (!empty($idprimary)) {
     $query = $pdo->prepare("UPDATE historial_service SET id_vehiculo = :idv, fecha = :fec, servicio = :sev, lugar = :lug, costo = :cos, kilometros = :kms, notas = :nta WHERE id = :id");

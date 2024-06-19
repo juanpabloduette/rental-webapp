@@ -4,8 +4,6 @@ window.addEventListener("load", () => {
 	let password = document.getElementById("password");
 	let alertt = document.getElementById("alert");
 
-	// console.log(usuario);
-
 	function data() {
 		fetch("validatelogin.php", {
 			method: "POST",
@@ -49,8 +47,6 @@ window.addEventListener("load", () => {
 
 let eyePass = document.getElementById("eye-password");
 eyePass.addEventListener("click", (e) => {
-	e.preventDefault();
-
 	if (password.value !== "") {
 		eyePassword();
 	}

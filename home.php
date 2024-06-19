@@ -10,7 +10,7 @@ if ($varsesion == null || $varsesion = '') {
 
     echo '<script>
                 setTimeout(function(){ 
-                window.location="index.php"
+                window.location="index.php";
                 }, 2000);
             </script>';
     die();
@@ -39,7 +39,6 @@ if ($varsesion == null || $varsesion = '') {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
-            /* font-family: "Poppins", sans-serif; */
             font-family: "Open Sans", sans-serif;
         }
 
@@ -52,21 +51,15 @@ if ($varsesion == null || $varsesion = '') {
         /* Estilos para la paginación activa */
         .pagination .page-item.active .page-link {
             background-color: #343A40;
-            /* Color de fondo del botón activo */
             border-color: #343A40;
-            /* Color del borde del botón activo */
             color: #ffffff;
-            /* Color del texto del botón activo */
         }
 
         /* Opcional: Estilos para el hover de la paginación */
         .pagination .page-item:hover .page-link {
             background-color: #495057;
-            /* Color de fondo en hover */
             border-color: #495057;
-            /* Color del borde en hover */
             color: #ffffff;
-            /* Color del texto en hover */
         }
 
         .pagination .page-item .page-link {
@@ -96,17 +89,9 @@ if ($varsesion == null || $varsesion = '') {
             display: flex;
         }
 
-        /* #btn-accordion-historial {
-            background-color: #343a40;
-        } */
-
         #button-modal-close-footer {
             background-color: #212529;
         }
-
-        /* #button-modal-close-footer:hover {
-            background-color: #343a40;
-        } */
 
         .accordion-dark .accordion-item {
             background-color: #343a40;
@@ -128,11 +113,6 @@ if ($varsesion == null || $varsesion = '') {
             filter: invert(1);
         }
 
-        /* .accordion-dark .accordion-body {
-            background-color: #343a40;
-            color: #fff;
-        } */
-
         .accordion-button.custom:focus {
             box-shadow: none;
             /* Elimina el borde azul */
@@ -150,7 +130,6 @@ if ($varsesion == null || $varsesion = '') {
             display: flex;
             justify-content: space-between;
             align-items: center;
-
         }
 
         .panel__top {
@@ -205,13 +184,11 @@ if ($varsesion == null || $varsesion = '') {
             font-size: 14px;
         }
 
-
         .panel-span-2 {
             background-color: red;
             white-space: nowrap;
             font-size: 14px;
         }
-
 
         .panel-span-3 {
             background-color: yellow;
@@ -229,7 +206,6 @@ if ($varsesion == null || $varsesion = '') {
             background-color: #212529;
             border-radius: 5px;
             margin: 2px;
-
         }
 
         /*  FIN DE PANEL */
@@ -446,7 +422,6 @@ if ($varsesion == null || $varsesion = '') {
             border-radius: 5px;
             box-shadow: 1px 0px 2px 1px rgba(0, 0, 0, 0.60);
             -webkit-box-shadow: 1px 0px 2px 1px rgba(0, 0, 0, 0.60);
-
         }
 
         .btn-box-danger:hover::after {
@@ -462,7 +437,6 @@ if ($varsesion == null || $varsesion = '') {
             border-right-width: 0px;
             border-top-color: white;
             transform: translatex(50%) rotate(315deg);
-            /* z-index: -1; */
             border-radius: 1px;
         }
 
@@ -479,7 +453,6 @@ if ($varsesion == null || $varsesion = '') {
             border-right-width: 0px;
             border-top-color: white;
             transform: translatex(50%) rotate(315deg);
-            /* z-index: -1; */
             border-radius: 1px;
         }
 
@@ -488,7 +461,6 @@ if ($varsesion == null || $varsesion = '') {
             border: none;
             background-color: transparent;
             color: white;
-
         }
 
         .btn-box-tool:hover::before {
@@ -521,7 +493,6 @@ if ($varsesion == null || $varsesion = '') {
             border-right-width: 0px;
             border-top-color: white;
             transform: translatex(50%) rotate(315deg);
-            /* z-index: -1; */
             border-radius: 1px;
         }
 
@@ -560,7 +531,6 @@ if ($varsesion == null || $varsesion = '') {
                 font-size: 18px;
                 width: 35px;
                 height: 35px;
-
             }
 
         }
@@ -587,8 +557,6 @@ if ($varsesion == null || $varsesion = '') {
 
             .panel__top__top i {
                 margin: 0 4px;
-
-
             }
         }
     </style>
@@ -599,22 +567,6 @@ if ($varsesion == null || $varsesion = '') {
         <div class="top-app" style="background-color: #212529; color: white; display: flex; justify-content: space-between; align-items: center;">
             <img src="./images/logo.png" alt="" style="width: 50px; filter: brightness(130%);" class="m-2">
             <a href="cerrarsesion.php">Cerrar Sesion</a>
-            <!-- <div style="display: flex; justify-content: center; align-items: center;">
-            <div class="title" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                <h1 class="m-0" style="font-size:18px; color: white;">GOOD BIKES ONLY:&nbsp;</h1>
-                <div id="current_date" style="color: white;">
-                    <script>
-                        date = new Date();
-                        year = date.getFullYear();
-                        month = date.getMonth() + 1;
-                        day = date.getDate();
-                        hour = date.getHours();
-                        min = date.getMinutes();
-                        document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year + "<br>" + hour + ":" + min + "hs.";
-                    </script>
-                </div>
-            </div>
-        </div> -->
             <div class="bars__menu">
                 <span class="line1__bars-menu"></span>
                 <span class="line2__bars-menu"></span>
@@ -772,15 +724,6 @@ if ($varsesion == null || $varsesion = '') {
                                     <option value="Scooter 125cc">Scooter 125cc</option>
                                     <option value="Bicicleta">Bicicleta</option>
                                 </select>
-                                <!-- <datalist id="desc">
-                                    <option value=""></option>
-                                    <option value="ATV 150cc"></option>
-                                    <option value="ATV 200cc"></option>
-                                    <option value="Scooter Vitalia 150cc"></option>
-                                    <option value="Scooter W150"></option>
-                                    <option value="Scooter 125cc"></option>
-                                    <option value="Bicicleta"></option>
-                                </datalist> -->
                             </div>
                             <div class="form-group my-1">
                                 <label for="tienda">Tienda</label>
@@ -910,17 +853,6 @@ if ($varsesion == null || $varsesion = '') {
                                     <tbody class="table-group-divider" id="tbodyhistorial">
                                         <!-- Contenido Historial -->
                                     </tbody>
-                                    <!-- <tfoot class="table-secondary">
-                                        <tr>
-                                            <th>Fecha</th>
-                                            <th>Servicio</th>
-                                            <th>Lugar</th>
-                                            <th>Costo</th>
-                                            <th>Kms.</th>
-                                            <th>Notas</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot> -->
                                 </table>
                             </div>
                             <div class="modal-footer">
@@ -933,24 +865,24 @@ if ($varsesion == null || $varsesion = '') {
                     <div class="modal-dialog modal-fullscreen">
                         <div class="modal-content bg-dark text-white">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"> Historial de rentas</h5>
+                                <h5 class="modal-title" id="ModalVentas"> Historial de rentas</h5>
                                 <div data-bs-theme="dark">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button-modal-close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button-modal-close-ventas"></button>
                                 </div>
                             </div>
                             <div class="modal-body">
-                                <div class="accordion py-1 accordion-flush accordion-dark accordion-flush" id="accordionFlushExample">
+                                <div class="accordion py-1 accordion-flush accordion-dark accordion-flush" id="accordionFlush-ventas">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
-                                            <button class="accordion-button btn-sm collapsed custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id="btn-accordion-historial">
+                                            <button class="accordion-button btn-sm collapsed custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id="btn-accordion-ventas">
                                                 Agregar renta +
                                             </button>
                                         </h2>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                <form action="" class="form-historial" id="" method="POST">
-                                                    <input type="hidden" id="">
-                                                    <input type="hidden" id="">
+                                                <form action="" class="form-historial" id="frm-ventas" method="POST">
+                                                    <!-- <input type="hidden" id="">
+                                                    <input type="hidden" id=""> -->
                                                     <div class="label-input">
                                                         <label for="fechaventa">Fecha</label>
                                                         <input type="date" class="form-control form-control-sm field-fechaventa mx-1" id="" autocomplete="off">
@@ -988,7 +920,7 @@ if ($varsesion == null || $varsesion = '') {
                                         </div>
                                     </div>
                                 </div>
-                                <table id="example" class="table table-striped table-sm align-middle table-hover" data-bs-theme="dark" style="width: 100%">
+                                <table id="table-ventas" class="table table-striped table-sm align-middle table-hover" data-bs-theme="dark" style="width: 100%">
                                     <thead class="table-secondary">
                                         <tr>
                                             <th>Fecha</th>
@@ -1000,7 +932,7 @@ if ($varsesion == null || $varsesion = '') {
                                             <th>Vendedor</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="table-group-divider" id="tbodyhistorial">
+                                    <tbody class="table-group-divider" id="tbodyventas">
                                         <!-- Contenido Historial -->
                                     </tbody>
                                 </table>

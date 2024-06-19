@@ -16,9 +16,16 @@ function PanelRender() {
 	let CountDisponible = 0;
 	let CountRentado = 0;
 	let CountNoDisponible = 0;
+	let CountAtv = 0;
+	let CountAtvNoDisp = 0;
+	let CountAtvRentado = 0;
+	let CountScooter = 0;
+	let CountBicycle = 0;
+
 	fetch("panel.php")
 		.then((response) => response.json())
 		.then((response) => {
+			console.log(response);
 			response.forEach((element) => {
 				switch (element.estado) {
 					case "Disponible":
@@ -34,6 +41,50 @@ function PanelRender() {
 						break;
 				}
 			});
+			response.forEach((element) => {
+				switch (element.producto) {
+					case "ATV 150cc":
+						if (element.estado === "Disponible") {
+							CountAtv++;
+						} else if (element.estado === "No Disp.") {
+							CountAtvNoDisp++;
+						} else {
+							CountAtvRentado++;
+						}
+						break;
+					case "ATV 200cc":
+						if (element.estado === "Disponible") {
+							CountAtv++;
+						} else if (element.estado === "No Disp.") {
+							CountAtvNoDisp++;
+						} else {
+							CountAtvRentado++;
+						}
+						break;
+					case "Scooter Vitalia 150cc":
+						if (element.estado === "Disponible") {
+							CountScooter++;
+						}
+						break;
+					case "Scooter 125cc":
+						if (element.estado === "Disponible") {
+							CountScooter++;
+						}
+						break;
+					case "Scooter W150":
+						if (element.estado === "Disponible") {
+							CountScooter++;
+						}
+						break;
+					case "Bicicleta":
+						if (element.estado === "Disponible") {
+							CountBicycle++;
+						}
+						break;
+					default:
+						break;
+				}
+			});
 			const panelTop = document.getElementById("panel--top");
 			panelTop.innerHTML = `
 	  		<div class="panel_disponibles">
@@ -41,38 +92,38 @@ function PanelRender() {
 					<div class="panel-span panel-span-1">Disponibles</div>
 				</div>
 				<div class='panel-atv'>
-					<img src='./images/atv.svg' style='width: 30px;'/><p>7</p>
+					<img src='./images/atv.svg' style='width: 30px;'/><p>${CountAtv}</p>
 				</div>
 				<div class='panel-scooter'>
-					<img src='./images/scooter.svg' style='width: 28px;'/><p>7</p>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p>${CountScooter}</p>
 				</div>
 				<div class='panel-bicycle'>
-					<img src='./images/bicycle.svg' style='width: 26px;'/><p>7</p>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
 
             </div>
             <div class="panel_no-disponibles">
                 <div class="panel-span panel-span-2">No disponibles</div>
                 <div class='panel-atv'>
-					<img src='./images/atv.svg' style='width: 30px;'/><p>7</p>
+					<img src='./images/atv.svg' style='width: 30px;'/><p>${CountAtvNoDisp}</p>
 				</div>
 				<div class='panel-scooter'>
 					<img src='./images/scooter.svg' style='width: 28px;'/><p>7</p>
 				</div>
 				<div class='panel-bicycle'>
-					<img src='./images/bicycle.svg' style='width: 26px;'/><p>7</p>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
             </div>
             <div class="panel_rentados">
                 <div class="panel-span panel-span-3">Rentados</div>
                 <div class='panel-atv'>
-					<img src='./images/atv.svg' style='width: 30px;'/><p>7</p>
+					<img src='./images/atv.svg' style='width: 30px;'/><p>${CountAtvRentado}</p>
 				</div>
 				<div class='panel-scooter'>
 					<img src='./images/scooter.svg' style='width: 28px;'/><p>7</p>
 				</div>
 				<div class='panel-bicycle'>
-					<img src='./images/bicycle.svg' style='width: 26px;'/><p>7</p>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
             </div>
 	`;
@@ -120,7 +171,7 @@ function validacionDatos() {
 		validacion.campoProducto = false;
 		return Swal.fire({
 			icon: "error",
-			title: "Ingrese una descripción",
+			title: "Ingrese un tipo de vehículo",
 			showConfirmButton: true,
 			// timer: 950
 		});

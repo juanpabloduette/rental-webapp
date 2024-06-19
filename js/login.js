@@ -59,9 +59,9 @@ eyePass.addEventListener("click", (e) => {
 function eyePassword() {
 	if (password.type !== "text") {
 		password.type = "text";
-		eyePass.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+		eyePass.innerHTML = '<i class="fa-solid fa-eye"></i>';
 	} else {
 		password.type = "password";
-		eyePass.innerHTML = '<i class="fa-solid fa-eye"></i>';
+		eyePass.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
 	}
 }

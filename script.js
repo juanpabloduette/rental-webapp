@@ -9,6 +9,74 @@ function ListarProductos(busqueda) {
 		.then((response) => {
 			resultado.innerHTML = response;
 		});
+	PanelRender();
+}
+
+function PanelRender() {
+	let CountDisponible = 0;
+	let CountRentado = 0;
+	let CountNoDisponible = 0;
+	fetch("panel.php")
+		.then((response) => response.json())
+		.then((response) => {
+			response.forEach((element) => {
+				switch (element.estado) {
+					case "Disponible":
+						CountDisponible++;
+						break;
+					case "No Disp.":
+						CountNoDisponible++;
+						break;
+					case "Rentado":
+						CountRentado++;
+						break;
+					default:
+						break;
+				}
+			});
+			const panelTop = document.getElementById("panel--top");
+			panelTop.innerHTML = `
+	  		<div class="panel_disponibles">
+                <div class='panel-disponible'>
+					<div class="panel-span panel-span-1">Disponibles</div>
+				</div>
+				<div class='panel-atv'>
+					<img src='./images/atv.svg' style='width: 30px;'/><p>7</p>
+				</div>
+				<div class='panel-scooter'>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p>7</p>
+				</div>
+				<div class='panel-bicycle'>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p>7</p>
+				</div>
+
+            </div>
+            <div class="panel_no-disponibles">
+                <div class="panel-span panel-span-2">No disponibles</div>
+                <div class='panel-atv'>
+					<img src='./images/atv.svg' style='width: 30px;'/><p>7</p>
+				</div>
+				<div class='panel-scooter'>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p>7</p>
+				</div>
+				<div class='panel-bicycle'>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p>7</p>
+				</div>
+            </div>
+            <div class="panel_rentados">
+                <div class="panel-span panel-span-3">Rentados</div>
+                <div class='panel-atv'>
+					<img src='./images/atv.svg' style='width: 30px;'/><p>7</p>
+				</div>
+				<div class='panel-scooter'>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p>7</p>
+				</div>
+				<div class='panel-bicycle'>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p>7</p>
+				</div>
+            </div>
+	`;
+		});
 }
 
 const validacion = {
@@ -108,7 +176,6 @@ const validacionFecha = () => {
 	if ((año % 4 === 0 && año % 100 !== 0) || año % 400 === 0) {
 		if (fechaIngresada.getMonth() === 1 && fechaIngresada.getDate() === 29) {
 			// alert("LA FECHA ESTA BIEN, ES BISIESTO");
-			// alert(fechaIngresada.getDate());
 			validacion.campoFecha = true;
 			return;
 		}
@@ -137,20 +204,6 @@ registrar.addEventListener("click", () => {
 	) {
 		borrarBusqueda.style.display = "none"; //borra cerrar de busqueda
 		buscar.value = ""; //borra campo de busqueda
-		borrarDescripcion.style.display = "none"; //borra cerrar de campo descripcion
-
-		// const data = new FormData(frm);
-		// data.append("codigo", codigo.value);
-
-		// for (const value of data.values()) {
-		//     console.log(value);
-		// }
-		// for (var p of data) {
-		//   let name = p[0];
-		//   let value = p[1];
-
-		//   console.log(name, value);
-		// }
 
 		fetch("registrar.php", {
 			method: "POST",
@@ -165,6 +218,7 @@ registrar.addEventListener("click", () => {
 		})
 			.then((response) => response.text())
 			.then((response) => {
+				console.log(response);
 				if (response == "ok") {
 					Swal.fire({
 						icon: "success",
@@ -196,7 +250,6 @@ registrar.addEventListener("click", () => {
 					registrar.value = "Ingresar";
 					cardHeader.classList.add("bg-dark");
 					idp.value = "";
-					// alert(codigo.value);
 					ListarProductos();
 					cancelar.style.display = "none";
 					animateBars();
@@ -212,7 +265,6 @@ let cardTitle = document.getElementById("cardtitle");
 let cardHeader = document.getElementById("card-header");
 
 cancelar.addEventListener("click", () => {
-	borrarDescripcion.style.display = "none"; //borra cerrar de campo descripcion
 	animateBars(); //guarda el menu en responsive
 	frm.reset();
 	registrar.value = "Ingresar";
@@ -233,10 +285,9 @@ function Eliminar(id, cod) {
 	cardHeader.classList.add("bg-dark");
 	cardTitle.style.color = "white";
 	cardTitle.textContent = "Ingresar vehículo";
-	codigo.disabled = false; // estaba en false, pero lo puse "true" para cuando pones editar un item pero despues clickeas en borrar otro.
+	codigo.disabled = false;
 	fecha.disabled = true;
-	borrarDescripcion.style.display = "none"; //borra cerrar de campo descripcion
-
+	// borrarDescripcion.style.display = "none";
 	borrarBusqueda.style.display = "none"; //borra cerrar de busqueda
 	buscar.value = ""; //borra campo de busqueda
 	Swal.fire({
@@ -272,7 +323,6 @@ function Eliminar(id, cod) {
 }
 
 function Editar(id) {
-	borrarDescripcion.style.display = "block"; //muestra cerrar de campo descripcion
 	animateBars(); //muestra el menu en responsive
 
 	fetch("editar.php", {
@@ -312,22 +362,6 @@ borrarBusqueda.addEventListener("click", () => {
 	buscar.value = "";
 	ListarProductos();
 	borrarBusqueda.style.display = "none";
-});
-
-const borrarDescripcion = document.querySelector(".cerrar-descripcion");
-
-borrarDescripcion.addEventListener("click", () => {
-	producto.value = "";
-	borrarDescripcion.style.display = "none";
-});
-
-producto.addEventListener("keyup", () => {
-	const valor = producto.value;
-	if (valor == "") {
-		borrarDescripcion.style.display = "none";
-	} else {
-		borrarDescripcion.style.display = "block";
-	}
 });
 
 buscar.addEventListener("keyup", () => {

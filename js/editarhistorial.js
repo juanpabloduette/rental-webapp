@@ -100,15 +100,5 @@ function editarIdHistorial(id) {
 			historialVehiculos.textContent = "Actualizar";
 			historialVehiculos.classList.add("btn-warning");
 			editarHistorialCancelar.style.display = "block";
-
-			// registrar.value = "Actualizar";
-			// cancelar.style.display = "block";
-
-			// cardTitle.style.color = "black";
-			// cardTitle.textContent = "Actualizar registro";
-			// cardHeader.classList.remove("bg-dark");
-			// cardHeader.style.backgroundColor = "#ffc107";
-
-			// codigo.disabled = true;
 		});
 }

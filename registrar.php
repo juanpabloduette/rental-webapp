@@ -5,7 +5,7 @@ if (isset($_POST)) {
     $estado = $_POST['estado'];
 
     if ($estado != 'Rentado') {
-        $fecha = '';
+        $fecha = null;
     } else {
         $fecha = $_POST['fecha'];
     };

@@ -7,7 +7,7 @@ $consulta = $pdo->prepare("SELECT * FROM productos ORDER BY codigo ASC");
 $consulta->execute();
 // Esta es la condicion del boton buscar
 if ($data != "") {
-    $consulta = $pdo->prepare("SELECT * FROM productos WHERE codigo LIKE '%" . $data . "%' OR estado LIKE '%" . $data . "%' OR producto LIKE '%" . $data . "%' OR tienda LIKE '%" . $data . "%' ");
+    $consulta = $pdo->prepare("SELECT * FROM productos WHERE codigo LIKE '%" . $data . "%' OR estado LIKE '%" . $data . "%' OR producto LIKE '%" . $data . "%' OR tienda LIKE '%" . $data . "%'");
     $consulta->execute();
 }
 $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
@@ -40,11 +40,11 @@ foreach ($resultado as $data) {
     $codigo = $data['codigo'];
     $desc_vehiculo = $data['producto'];
     echo "<tr>
-            <td class='td-celdas'>" . $data['codigo'] . "</td>
+            <td class='td-celdas td-celdas-vehiculo' style='text-align:center;'><span class='td-span'>" . $codigo . "</td>
             <td class='td-color'>
-                <div class='td-display' style='display: flex; justify-content: center; align-items: center; flex-direction: column; position: relative; padding: 2px 2px;'>
-                    <i class='fa-solid fa-circle' style='font-size: 11px; margin: 2px; color:$color;'></i>
-                    <button type='button' class='btn-box-tool' data-bs-target='#historialmodal' data-bs-toggle='modal' onclick=listarhistorial($id,$codigo)><i class='fa-solid fa-wrench' style='padding: 2px;'></i></button>
+                <div class='td-display' style='display: flex; justify-content: center; align-items: center; flex-direction: column; position: relative; padding: 4px 2px;'>
+                    <i class='fa-solid fa-circle' style='margin: 2px; color:$color;'></i>
+                    <button type='button' class='btn-box-tool' data-bs-target='#historialmodal' data-bs-toggle='modal' onclick=listarhistorial($id,$codigo)><i class='fa-solid fa-wrench' style='padding: 4px 2px;'></i></button>
                 </div>
             </td>
             <td class='td-celdas' id='fecha'>" . $data['estado'] . " " . $fechaRentado . "</td>

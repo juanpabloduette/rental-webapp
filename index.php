@@ -62,7 +62,8 @@
 
         .box-form {
             padding: 20px;
-            background-color: #212529;
+            /* background-color: #212529; */
+            background-color: #000000;
             border-radius: 10px;
         }
 
@@ -104,6 +105,10 @@
             display: none;
         }
 
+        .btn-ingresar {
+            color: #FFFFFF !important;
+        }
+
         @media (max-width: 600px) {}
     </style>
 </head>
@@ -121,21 +126,19 @@
                             <div class="input__icon">
                                 <i class="fa-solid fa-user"></i>
                             </div>
-                            <!-- <label for="usuario">Usuario</label> -->
                             <input type="text" name="usuario" placeholder="Usuario" class="form-control input-login" id="usuario" autocomplete="off">
                         </div>
                         <div class="input">
-                            <!-- <label for="password">Contraseña</label> -->
                             <div class="input__icon">
                                 <i class='fa-solid fa-lock'></i>
                             </div>
                             <div class="eye" id="eye-password">
-                                <i class="fa-solid fa-eye"></i>
+                                <i class="fa-solid fa-eye-slash"></i>
                             </div>
                             <input type="password" name="password" placeholder="Contraseña" class="form-control input-login" id="password">
 
                         </div>
-                        <input type="submit" value="Ingresar">
+                        <input type="submit" value="Ingresar" class="btn btn-success btn-ingresar">
                         <div id="alert"></div>
                     </form>
                 </div>
@@ -148,7 +151,7 @@
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="login.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

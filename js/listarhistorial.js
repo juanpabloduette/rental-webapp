@@ -3,8 +3,8 @@ const tbodyHistorial = document.getElementById("tbodyhistorial");
 const idVehiculo = document.getElementById("idvehiculo");
 
 function listarhistorial(id, cod) {
-	historialVehiculo.innerHTML = `Vehiculo: <span class='historial-span'>${cod}</span>`;
-	document.title = `APP RENTAL - Vehiculo ${cod}`;
+	historialVehiculo.innerHTML = `Vehículo: <span class='historial-span'>${cod}</span>`;
+	document.title = `APP RENTAL - Vehículo ${cod}`;
 
 	fetch("listarhistorial.php", {
 		method: "POST",

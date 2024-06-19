@@ -12,8 +12,7 @@ if ($varsesion == null || $varsesion = '') {
                 setTimeout(function(){ 
                 window.location="index.php"
                 }, 2000);
-              </script>';
-
+            </script>';
     die();
 };
 ?>
@@ -25,6 +24,8 @@ if ($varsesion == null || $varsesion = '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APP RENTAL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/81e9130226.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -38,11 +39,16 @@ if ($varsesion == null || $varsesion = '') {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
+            /* font-family: "Poppins", sans-serif; */
+            font-family: "Open Sans", sans-serif;
         }
 
+        #codigo .form-selected disabled {
+            background-color: #212529;
+        }
 
         /* DATATABLE */
+
         /* Estilos para la paginación activa */
         .pagination .page-item.active .page-link {
             background-color: #343A40;
@@ -88,11 +94,6 @@ if ($varsesion == null || $varsesion = '') {
 
         .acciones-buttons {
             display: flex;
-        }
-
-        .label-input {
-            display: flex;
-            flex-direction: column;
         }
 
         /* #btn-accordion-historial {
@@ -149,6 +150,7 @@ if ($varsesion == null || $varsesion = '') {
             display: flex;
             justify-content: space-between;
             align-items: center;
+
         }
 
         .panel__top {
@@ -156,7 +158,7 @@ if ($varsesion == null || $varsesion = '') {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            height: 40px;
+            padding: 10px 0;
         }
 
         .panel__top p {
@@ -167,6 +169,7 @@ if ($varsesion == null || $varsesion = '') {
         .panel-span {
             border-radius: 5px;
             padding: 0px 3px;
+            margin: 0 3px;
             background-color: chocolate;
             font-size: 11px;
             font-weight: 500;
@@ -183,104 +186,111 @@ if ($varsesion == null || $varsesion = '') {
             margin: 10px;
         }
 
+        .panel_disponibles,
+        .panel_no-disponibles,
+        .panel_rentados {
+            flex-direction: column;
+            background-color: #343A40;
+            border-radius: 5px;
+            min-width: 110px;
+        }
+
+        .panel-disponible {
+            display: flex;
+            margin: 2px;
+        }
+
         .panel-span-1 {
             background-color: green;
+            font-size: 14px;
         }
 
 
         .panel-span-2 {
             background-color: red;
+            white-space: nowrap;
+            font-size: 14px;
         }
 
 
         .panel-span-3 {
             background-color: yellow;
             color: black;
+            font-size: 14px;
+        }
+
+        .panel-atv,
+        .panel-scooter,
+        .panel-bicycle {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            background-color: #212529;
+            border-radius: 5px;
+            margin: 2px;
+
         }
 
         /*  FIN DE PANEL */
 
         /* HISTORIAL */
 
+        .modal-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .historial-span {
+            background-color: #e9ecef;
+            border-radius: 50%;
+            color: #212529;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 2px;
+            font-weight: 700;
+        }
+
         .btn-form-historial-cancelar {
             display: none;
         }
 
         .form-historial {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,
+                    minmax(150px,
+                        1fr));
+            gap: 6px;
+        }
+
+        .form-historial label {
+            padding: 0 4px;
+        }
+
+        .btn-form-historial-box {
             display: flex;
-            width: 100%;
-        }
-
-        .form-historial-bloque1 {
-            display: flex;
-            width: 100%;
-        }
-
-        .form-historial-bloque2 {
-            display: flex;
-            width: 100%;
-        }
-
-        .field-servicio {
-            max-width: 220px;
-        }
-
-        /* 
-        .field-lugar {
-            max-width: 160px;
-        } */
-
-        .field-fecha {
-            max-width: 130px;
-        }
-
-        .field-costo {
-            max-width: 80px;
-        }
-
-        .field-kms {
-            max-width: 80px;
+            margin: 6px 0;
         }
 
         @media (max-width: 992px) {
-            .form-historial {
-                flex-direction: column;
-            }
-
-            .field-servicio,
-            .field-fecha,
-            .field-lugar,
-            .field-costo,
-            .field-kms,
-            .field-notas,
-            .btn-form-historial {
-                margin: 3px 0px;
-            }
-
             .acciones-buttons {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 450px) {
-            .form-historial-bloque1 {
-                flex-direction: column;
-            }
-
-            .form-historial-bloque2 {
                 flex-direction: column;
             }
         }
 
         /* FIN DE HISTORIAL */
 
-        .top {
+        .top-app {
             position: sticky;
             top: 0;
             z-index: 1040;
         }
 
-        .top a {
+        .top-app a {
             font-size: 10px;
             text-decoration: none;
             color: white;
@@ -289,14 +299,25 @@ if ($varsesion == null || $varsesion = '') {
             padding: 2px 6px;
             transition: .2s ease all;
             margin: 0 5px;
-
         }
 
-        .top a:hover {
-            /* text-decoration: underline; */
-            padding: 4px 10px;
+        .top-app a:hover {
             color: grey;
             border: 1px solid grey;
+        }
+
+        .td-span {
+            background-color: #e9ecef;
+            border-radius: 50%;
+            color: #212529;
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 2px;
+            font-weight: 700;
         }
 
         .menu-content {
@@ -307,6 +328,7 @@ if ($varsesion == null || $varsesion = '') {
         .menu {
             position: sticky;
             top: 58px;
+            height: 100%;
         }
 
         .busqueda {
@@ -503,6 +525,11 @@ if ($varsesion == null || $varsesion = '') {
             border-radius: 1px;
         }
 
+        input:disabled {
+            background-color: #cccccc;
+            color: #999999;
+            cursor: not-allowed;
+        }
 
         @media (max-width: 992px) {
             .bars__menu {
@@ -521,8 +548,19 @@ if ($varsesion == null || $varsesion = '') {
                 padding: 1px !important;
             }
 
+            .td-color .td-display i {
+                font-size: 18px;
+            }
+
             .td-color {
                 padding: 0px !important;
+            }
+
+            .td-span {
+                font-size: 18px;
+                width: 35px;
+                height: 35px;
+
             }
 
         }
@@ -533,16 +571,32 @@ if ($varsesion == null || $varsesion = '') {
             }
 
             .panel {
-
                 flex-direction: column;
+            }
+
+            .panel__top__top {
+                flex-direction: column;
+                display: flex;
+            }
+
+            .panel__top__top button {
+                margin: 4px;
+                width: 100%;
+                padding: 20px 80px;
+            }
+
+            .panel__top__top i {
+                margin: 0 4px;
+
+
             }
         }
     </style>
 </head>
 
 <body style="background-color: black;">
-    <div class="col-lg-12 top">
-        <div class="top" style="background-color: #212529; color: white; display: flex; justify-content: space-between; align-items: center;">
+    <div class="col-lg-12 top-app">
+        <div class="top-app" style="background-color: #212529; color: white; display: flex; justify-content: space-between; align-items: center;">
             <img src="./images/logo.png" alt="" style="width: 50px; filter: brightness(130%);" class="m-2">
             <a href="cerrarsesion.php">Cerrar Sesion</a>
             <!-- <div style="display: flex; justify-content: center; align-items: center;">
@@ -570,22 +624,11 @@ if ($varsesion == null || $varsesion = '') {
     </div>
     <div class="container panel">
         <div class="panel__top__top">
-            <button class="btn btn-success btn-block btn-sm">Ingresar renta</button>
-            <button class="btn btn-primary btn-block btn-sm">Historial de rentas</button>
+            <!-- <button class="btn btn-outline-warning btn-block">Ingresar renta <i class="fa-solid fa-file-import"></i></button> -->
+            <button class="btn btn-outline-warning btn-block" data-bs-target='#modalventas' data-bs-toggle='modal'>Historial de rentas<i class="fa-solid fa-hand-holding-dollar"></i></button>
         </div>
-        <div class="panel__top">
-            <div class="panel_disponibles">
-                <div class="panel-span panel-span-1">Disponibles</div>
-                <p>15</p>
-            </div>
-            <div class="panel_no-disponibles">
-                <div class="panel-span panel-span-2">No disponibles</div>
-                <p>15</p>
-            </div>
-            <div class="panel_rentados">
-                <div class="panel-span panel-span-3">Rentados</div>
-                <p>15</p>
-            </div>
+        <div class="panel__top" id="panel--top">
+            <!-- Contenido Panel -->
         </div>
     </div>
     <div class="container mt-2">
@@ -717,10 +760,19 @@ if ($varsesion == null || $varsesion = '') {
                                 <input type="date" disabled name="fecha" placeholder="Ingrese Fecha" class="form-control" id="fecha">
                             </div>
                             <div class="form-group my-1" style='position: relative;'>
-                                <label for="producto">Descripción</label>
+                                <label for="producto">Vehículo</label>
                                 <i class="fa-solid fa-xmark cerrar-descripcion"></i>
-                                <input type="text" name="producto" placeholder="Descripcion" class="form-control" id="producto" list="desc">
-                                <datalist id="desc">
+                                <!-- <input type="text" name="producto" placeholder="Descripcion" class="form-control" id="producto" list="desc"> -->
+                                <select name="producto" id="producto" class="form-select">
+                                    <option value=""></option>
+                                    <option value="ATV 150cc">ATV 150cc</option>
+                                    <option value="ATV 200cc">ATV 200cc</option>
+                                    <option value="Scooter Vitalia 150cc">Scooter Vitalia 150cc</option>
+                                    <option value="Scooter W150">Scooter W150</option>
+                                    <option value="Scooter 125cc">Scooter 125cc</option>
+                                    <option value="Bicicleta">Bicicleta</option>
+                                </select>
+                                <!-- <datalist id="desc">
                                     <option value=""></option>
                                     <option value="ATV 150cc"></option>
                                     <option value="ATV 200cc"></option>
@@ -728,7 +780,7 @@ if ($varsesion == null || $varsesion = '') {
                                     <option value="Scooter W150"></option>
                                     <option value="Scooter 125cc"></option>
                                     <option value="Bicicleta"></option>
-                                </datalist>
+                                </datalist> -->
                             </div>
                             <div class="form-group my-1">
                                 <label for="tienda">Tienda</label>
@@ -777,10 +829,10 @@ if ($varsesion == null || $varsesion = '') {
                 <table class="table table-hover table-responsive-{576px} table-striped align-middle table-dark table-sm">
                     <thead>
                         <tr>
-                            <th class='td-celdas'>N°</th>
+                            <th class='td-celdas' style='text-align: center;'>N°</th>
                             <th class='td-celdas'></th>
                             <th class='td-celdas'>Estado</th>
-                            <th class='td-celdas'>Desc.</th>
+                            <th class='td-celdas'>Vehículo</th>
                             <th class='td-celdas' style="text-align: center;">Tienda</th>
                             <th class='td-celdas'></th>
                         </tr>
@@ -807,41 +859,38 @@ if ($varsesion == null || $varsesion = '') {
                                         </h2>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                <div class=""></div>
                                                 <form action="" class="form-historial" id="frm-vehiculos" method="POST">
-                                                    <div class="form-historial-bloque1">
-                                                        <input type="hidden" id="idprimary">
-                                                        <input type="hidden" id="idvehiculo">
-                                                        <div class="label-input">
-                                                            <label for="fechahistorial">Fecha</label>
-                                                            <input type="date" class="form-control form-control-sm field-fecha mx-1" id="fechahistorial" autocomplete="off">
-                                                        </div>
-                                                        <div class="label-input">
-                                                            <label for="servicio">Servicio</label>
-                                                            <input type="text" class="form-control form-control-sm field-servicio mx-1" id="servicio" placeholder="Servicio" autocomplete="off">
-                                                        </div>
-                                                        <div class="label-input">
-                                                            <label for="lugar">Lugar</label>
-                                                            <input type="text" class="form-control form-control-sm field-lugar mx-1" id="lugar" placeholder="Lugar" autocomplete="off">
-                                                        </div>
+                                                    <input type="hidden" id="idprimary">
+                                                    <input type="hidden" id="idvehiculo">
+                                                    <div class="label-input">
+                                                        <label for="fechahistorial">Fecha</label>
+                                                        <input type="date" class="form-control form-control-sm field-fecha mx-1" id="fechahistorial" autocomplete="off">
                                                     </div>
-                                                    <div class="form-historial-bloque2">
-                                                        <div class="label-input">
-                                                            <label for="costo">Costo</label>
-                                                            <input type="text" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo" autocomplete="off">
-                                                        </div>
-                                                        <div class="label-input">
-                                                            <label for="kilometros">Kilometros</label>
-                                                            <input type="text" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms." autocomplete="off">
-                                                        </div>
-                                                        <div class="label-input">
-                                                            <label for="nota">Notas</label>
-                                                            <input type="text" class="form-control form-control-sm field-notas mx-1" id="nota" placeholder="Notas (Opcional)" autocomplete="off">
-                                                        </div>
+                                                    <div class="label-input">
+                                                        <label for="servicio">Servicio</label>
+                                                        <input type="text" class="form-control form-control-sm field-servicio mx-1" id="servicio" placeholder="Servicio" autocomplete="off">
                                                     </div>
+                                                    <div class="label-input">
+                                                        <label for="lugar">Lugar</label>
+                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="lugar" placeholder="Lugar" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="costo">Costo</label>
+                                                        <input type="text" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="kilometros">Kilometros</label>
+                                                        <input type="text" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms." autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="nota">Notas</label>
+                                                        <input type="text" class="form-control form-control-sm field-notas mx-1" id="nota" placeholder="Notas (Opcional)" autocomplete="off">
+                                                    </div>
+                                                </form>
+                                                <div class="btn-form-historial-box">
                                                     <button class="btn btn-success btn-block btn-sm btn-form-historial mx-1" id="historial-vehiculos">Ingresar</button>
                                                     <button class="btn btn-danger btn-block btn-sm btn-form-historial-cancelar mx-1" id="historial-vehiculos-cancelar">Cancelar</button>
-                                                </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -859,7 +908,7 @@ if ($varsesion == null || $varsesion = '') {
                                         </tr>
                                     </thead>
                                     <tbody class="table-group-divider" id="tbodyhistorial">
-
+                                        <!-- Contenido Historial -->
                                     </tbody>
                                     <!-- <tfoot class="table-secondary">
                                         <tr>
@@ -880,26 +929,100 @@ if ($varsesion == null || $varsesion = '') {
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="modalventas" tabindex="-1" aria-labelledby="modalventas" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content bg-dark text-white">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"> Historial de rentas</h5>
+                                <div data-bs-theme="dark">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button-modal-close"></button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="accordion py-1 accordion-flush accordion-dark accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button btn-sm collapsed custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id="btn-accordion-historial">
+                                                Agregar renta +
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <form action="" class="form-historial" id="" method="POST">
+                                                    <input type="hidden" id="">
+                                                    <input type="hidden" id="">
+                                                    <div class="label-input">
+                                                        <label for="fechaventa">Fecha</label>
+                                                        <input type="date" class="form-control form-control-sm field-fechaventa mx-1" id="" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="vehiculoventa">Vehículo</label>
+                                                        <input type="text" class="form-control form-control-sm field-vehiculoventa mx-1" id="" placeholder="Servicio" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="lugar">Precio</label>
+                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="" placeholder="Lugar" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="costo">Cant. días</label>
+                                                        <input type="text" class="form-control form-control-sm field-costo mx-1" id="" placeholder="Costo" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="kilometros">Hora salida</label>
+                                                        <input type="text" class="form-control form-control-sm field-kms mx-1" id="" placeholder="Kms." autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="kilometros">Hora llegada</label>
+                                                        <input type="text" class="form-control form-control-sm field-kms mx-1" id="" placeholder="Kms." autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="nota">Vendedor</label>
+                                                        <input type="text" class="form-control form-control-sm field-notas mx-1" id="" placeholder="Notas (Opcional)" autocomplete="off">
+                                                    </div>
+                                                </form>
+                                                <div class="btn-form-historial-box">
+                                                    <button class="btn btn-success btn-block btn-sm btn-form-historial mx-1" id="">Ingresar</button>
+                                                    <button class="btn btn-danger btn-block btn-sm btn-form-historial-cancelar mx-1" id="">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table id="example" class="table table-striped table-sm align-middle table-hover" data-bs-theme="dark" style="width: 100%">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Nro. Moto</th>
+                                            <th>Precio</th>
+                                            <th>Cant. días</th>
+                                            <th>Hora salida</th>
+                                            <th>Hora llegada</th>
+                                            <th>Vendedor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider" id="tbodyhistorial">
+                                        <!-- Contenido Historial -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="button-modal-close-footer">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-
-    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="js/luxon.min.js"></script>
-
     <script src="js/datatables.min.js"></script>
     <script src="js/datatable.js"></script>
     <script src="script.js"></script>
@@ -907,6 +1030,7 @@ if ($varsesion == null || $varsesion = '') {
     <script src="js/listarhistorial.js"></script>
     <script src="js/borraridhistorial.js"></script>
     <script src="js/editarhistorial.js"></script>
+    <script src="js/ventas.js"></script>
 </body>
 
 </html>

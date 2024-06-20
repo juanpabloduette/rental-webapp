@@ -13,34 +13,19 @@ function ListarProductos(busqueda) {
 }
 
 function PanelRender() {
-	let CountDisponible = 0;
-	let CountRentado = 0;
-	let CountNoDisponible = 0;
 	let CountAtv = 0;
 	let CountAtvNoDisp = 0;
 	let CountAtvRentado = 0;
 	let CountScooter = 0;
+	let CountScooterNoDisp = 0;
+	let CountScooterRentado = 0;
 	let CountBicycle = 0;
 
 	fetch("panel.php")
 		.then((response) => response.json())
 		.then((response) => {
-			console.log(response);
-			response.forEach((element) => {
-				switch (element.estado) {
-					case "Disponible":
-						CountDisponible++;
-						break;
-					case "No Disp.":
-						CountNoDisponible++;
-						break;
-					case "Rentado":
-						CountRentado++;
-						break;
-					default:
-						break;
-				}
-			});
+			// console.log(response);
+
 			response.forEach((element) => {
 				switch (element.producto) {
 					case "ATV 150cc":
@@ -64,16 +49,28 @@ function PanelRender() {
 					case "Scooter Vitalia 150cc":
 						if (element.estado === "Disponible") {
 							CountScooter++;
+						} else if (element.estado === "No Disp.") {
+							CountScooterNoDisp++;
+						} else {
+							CountScooterRentado++;
 						}
 						break;
 					case "Scooter 125cc":
 						if (element.estado === "Disponible") {
 							CountScooter++;
+						} else if (element.estado === "No Disp.") {
+							CountScooterNoDisp++;
+						} else {
+							CountScooterRentado++;
 						}
 						break;
 					case "Scooter W150":
 						if (element.estado === "Disponible") {
 							CountScooter++;
+						} else if (element.estado === "No Disp.") {
+							CountScooterNoDisp++;
+						} else {
+							CountScooterRentado++;
 						}
 						break;
 					case "Bicicleta":
@@ -108,7 +105,7 @@ function PanelRender() {
 					<img src='./images/atv.svg' style='width: 30px;'/><p>${CountAtvNoDisp}</p>
 				</div>
 				<div class='panel-scooter'>
-					<img src='./images/scooter.svg' style='width: 28px;'/><p>7</p>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p>${CountScooterNoDisp}</p>
 				</div>
 				<div class='panel-bicycle'>
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
@@ -120,7 +117,7 @@ function PanelRender() {
 					<img src='./images/atv.svg' style='width: 30px;'/><p>${CountAtvRentado}</p>
 				</div>
 				<div class='panel-scooter'>
-					<img src='./images/scooter.svg' style='width: 28px;'/><p>7</p>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p>${CountScooterRentado}</p>
 				</div>
 				<div class='panel-bicycle'>
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
@@ -408,7 +405,7 @@ function Editar(id) {
 }
 
 const borrarBusqueda = document.querySelector(".cerrar-busqueda");
-
+borrarBusqueda.style.display = "none";
 borrarBusqueda.addEventListener("click", () => {
 	buscar.value = "";
 	ListarProductos();

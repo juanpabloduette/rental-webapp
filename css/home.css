@@ -100,7 +100,6 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	padding: 10px 0;
 }
 
 .panel__top p {
@@ -289,19 +288,7 @@
 	border-radius: 50%;
 }
 
-.cerrar-descripcion {
-	position: absolute;
-	top: 33px;
-	right: 13px;
-	cursor: pointer;
-	display: none;
-	padding: 2px 4px;
-	transition: 0.3s ease all;
-	border-radius: 50%;
-}
-
-.cerrar-busqueda:hover,
-.cerrar-descripcion:hover {
+.cerrar-busqueda:hover {
 	background-color: #e9ecef;
 	padding: 2px 4px;
 }

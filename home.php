@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion = '') {
+if ($varsesion == null || $varsesion == '') {
     echo 'Sin autorizacion, redireccionando a pagina de Login';
     // Redireccionar a index.php
     // echo "<div class='content'><div class=''><b>No estas logueado, redireccionando a la pagina de login...</div></div>
@@ -187,8 +187,7 @@ if ($varsesion == null || $varsesion = '') {
                             </div>
                             <div class="form-group my-1" style='position: relative;'>
                                 <label for="producto">Vehículo</label>
-                                <i class="fa-solid fa-xmark cerrar-descripcion"></i>
-                                <!-- <input type="text" name="producto" placeholder="Descripcion" class="form-control" id="producto" list="desc"> -->
+                                <!-- <i class="fa-solid fa-xmark cerrar-descripcion"></i> -->
                                 <select name="producto" id="producto" class="form-select">
                                     <option value=""></option>
                                     <option value="ATV 150cc">ATV 150cc</option>
@@ -224,7 +223,6 @@ if ($varsesion == null || $varsesion = '') {
                     <div class="col-lg-6">
                         <div action="" method="post">
                             <div class="form-group busqueda">
-                                <!-- <label for="buscar" style="color: white;">Buscar:</label> -->
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <i class="fa-solid fa-xmark cerrar-busqueda"></i>
                                 <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control" list="opciones" style="padding-left: 30px; padding-right: 30px;">
@@ -355,8 +353,6 @@ if ($varsesion == null || $varsesion = '') {
                                         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
                                                 <form action="" class="form-historial" id="frm-ventas" method="POST">
-                                                    <!-- <input type="hidden" id="">
-                                                    <input type="hidden" id=""> -->
                                                     <div class="label-input">
                                                         <label for="fechaventa">Fecha</label>
                                                         <input type="date" class="form-control form-control-sm field-fechaventa mx-1" id="fechaventa" autocomplete="off">

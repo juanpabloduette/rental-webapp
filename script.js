@@ -309,8 +309,8 @@ registrar.addEventListener("click", () => {
 });
 
 cancelar = document.getElementById("cancelar");
-let cardTitle = document.getElementById("cardtitle");
-let cardHeader = document.getElementById("card-header");
+const cardTitle = document.getElementById("cardtitle");
+const cardHeader = document.getElementById("card-header");
 
 cancelar.addEventListener("click", () => {
 	animateBars(); //guarda el menu en responsive

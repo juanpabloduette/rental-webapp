@@ -5,11 +5,19 @@
 	font-family: "Open Sans", sans-serif;
 }
 
-#codigo .form-selected disabled {
+/* #codigo .form-selected disabled {
 	background-color: #212529;
-}
+} */
 
 /* DATATABLE */
+
+.dt-length {
+	margin-top: 3px;
+}
+
+.dt-search {
+	margin-bottom: 8px;
+}
 
 /* Estilos para la paginación activa */
 .pagination .page-item.active .page-link {

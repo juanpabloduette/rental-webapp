@@ -15,6 +15,11 @@
             color: white;
         }
 
+        .title-app {
+            margin-top: auto;
+            margin-bottom: 2px;
+        }
+
         .input {
             padding: 10px;
             max-width: 200px;
@@ -62,9 +67,10 @@
 
         .box-form {
             padding: 20px;
-            /* background-color: #212529; */
-            background-color: #000000;
+            background-color: #212529;
+            /* background-color: #000000; */
             border-radius: 10px;
+            margin: auto;
         }
 
         .box-form h3 {
@@ -142,7 +148,7 @@
                         <div id="alert"></div>
                     </form>
                 </div>
-                <p>Admin Rental</p>
+                <p class="title-app">Admin Rental</p>
             </div>
 
         </div>

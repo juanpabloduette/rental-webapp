@@ -304,7 +304,7 @@ if ($varsesion == null || $varsesion == '') {
                                                 </form>
                                                 <div class="btn-form-historial-box">
                                                     <button class="btn btn-success btn-block btn-sm btn-form-historial mx-1" id="historial-vehiculos">Ingresar</button>
-                                                    <button class="btn btn-danger btn-block btn-sm btn-form-historial-cancelar mx-1" id="historial-vehiculos-cancelar">Cancelar</button>
+                                                    <button class="btn btn-danger btn-block btn-sm btn-form-historial-cancelar mx-1" style="display:none;" id="historial-vehiculos-cancelar">Cancelar</button>
                                                 </div>
                                             </div>
                                         </div>

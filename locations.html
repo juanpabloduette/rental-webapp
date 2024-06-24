@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Locations</title>
+		<!-- Hojas de estilo de Leaflet -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+		<style>
+			#map {
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+
+		<!-- Scripts de Leaflet y código JavaScript -->
+		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		<script>
+			// Función para inicializar el mapa
+			function initMap() {
+				// Crear el mapa centrado en una ubicación inicial (por ejemplo, el centro del mundo)
+				var map = L.map("map").setView([-34.6037, -58.3816], 9);
+
+				// Añadir capa de azulejos (tiles) de OpenStreetMap
+				L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+					maxZoom: 18,
+				}).addTo(map);
+
+				// Función para actualizar la ubicación en el mapa
+				function actualizarUbicacion() {
+					// Obtener datos de ubicación desde el servidor (usando Fetch API)
+					fetch("getlocations.php")
+						.then((response) => response.json())
+						.then((data) => {
+							// Limpiar marcadores existentes antes de añadir nuevos
+							map.eachLayer((layer) => {
+								if (layer instanceof L.Marker) {
+									map.removeLayer(layer);
+								}
+							});
+
+							// Verificar si se obtuvieron datos válidos
+							if (data.length > 0) {
+								var location = data[0]; // Obtener la primera (y única) ubicación
+
+								// Añadir marcador para la última ubicación
+								L.marker([location.latitud, location.longitud]).addTo(map);
+								console.log("Actualizando ubicacion");
+							} else {
+								console.error("No se encontraron ubicaciones en la base de datos.");
+							}
+						})
+						.catch((error) => {
+							console.error("Error al obtener la ubicación desde el servidor:", error);
+						});
+				}
+
+				// Llamar a la función inicialmente al cargar la página
+				actualizarUbicacion();
+
+				// Actualizar la ubicación cada 5 minutos (300,000 milisegundos)
+				setInterval(actualizarUbicacion, 300000); // 300000 ms = 5 minutos
+			}
+
+			// Llamar a la función initMap cuando el DOM esté cargado
+			document.addEventListener("DOMContentLoaded", initMap);
+		</script>
+	</body>
+</html>

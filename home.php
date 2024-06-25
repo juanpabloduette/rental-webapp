@@ -356,32 +356,40 @@ if ($varsesion == null || $varsesion == '') {
                                             <div class="accordion-body">
                                                 <form action="" class="form-historial" id="frm-ventas" method="POST">
                                                     <div class="label-input">
-                                                        <label for="fechaventa">Fecha</label>
-                                                        <input type="date" class="form-control form-control-sm field-fechaventa mx-1" id="fechaventa" autocomplete="off">
+                                                        <label for="fechaventadesde">Desde</label>
+                                                        <input type="date" class="form-control form-control-sm field-fechaventadesde mx-1" id="fechaventadesde" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="vehiculoventa">Vehículo</label>
-                                                        <input type="text" class="form-control form-control-sm field-vehiculoventa mx-1" id="vehiculoventa" placeholder="Vehiculo" autocomplete="off">
+                                                        <label for="fechaventahasta">Hasta</label>
+                                                        <input type="date" class="form-control form-control-sm field-fechaventahasta mx-1" id="fechaventahasta" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="lugar">Precio</label>
-                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="precioventa" placeholder="Precio" autocomplete="off">
-                                                    </div>
-                                                    <div class="label-input">
-                                                        <label for="costo">Cant. días</label>
+                                                        <label for="cantdias">Cant. días</label>
                                                         <input type="text" class="form-control form-control-sm field-costo mx-1" id="cantdias" placeholder="Cant. días" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="kilometros">Hora salida</label>
-                                                        <input type="text" class="form-control form-control-sm field-kms mx-1" id="horasalidaventa" placeholder="Hora Salida" autocomplete="off">
+                                                        <label for="vehiculoventa">Nro. Vehículo</label>
+                                                        <input type="text" class="form-control form-control-sm field-vehiculoventa mx-1" id="vehiculoventa" placeholder="Vehiculo" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="kilometros">Hora llegada</label>
-                                                        <input type="text" class="form-control form-control-sm field-kms mx-1" id="horallegadaventa" placeholder="Hora Llegada" autocomplete="off">
+                                                        <label for="horasalidaventa">Hora salida</label>
+                                                        <input type="time" class="form-control form-control-sm field-kms mx-1" id="horasalidaventa" placeholder="Hora Salida" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="nota">Vendedor</label>
+                                                        <label for="horallegadaventa">Hora llegada</label>
+                                                        <input type="time" class="form-control form-control-sm field-kms mx-1" id="horallegadaventa" placeholder="Hora Llegada" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="precioventa">Precio</label>
+                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="precioventa" placeholder="Precio" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="vendedorventa">Vendedor</label>
                                                         <input type="text" class="form-control form-control-sm field-notas mx-1" id="vendedorventa" placeholder="Vendedor" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="notaventa">Nota (opcional)</label>
+                                                        <input type="text" class="form-control form-control-sm field-notas mx-1" id="notaventa" placeholder="Nota" autocomplete="off">
                                                     </div>
                                                 </form>
                                                 <div class="btn-form-historial-box">
@@ -395,13 +403,15 @@ if ($varsesion == null || $varsesion == '') {
                                 <table id="table-ventas" class="table table-striped table-sm align-middle table-hover" data-bs-theme="dark" style="width: 100%">
                                     <thead class="table-secondary">
                                         <tr>
-                                            <th>Fecha</th>
-                                            <th>Nro. Moto</th>
-                                            <th>Precio</th>
+                                            <th>Desde</th>
+                                            <th>Hasta</th>
                                             <th>Cant. días</th>
+                                            <th>Nro. Vehículo</th>
                                             <th>Hora salida</th>
                                             <th>Hora llegada</th>
+                                            <th>Precio</th>
                                             <th>Vendedor</th>
+                                            <th>Nota</th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-group-divider" id="tbodyventas">

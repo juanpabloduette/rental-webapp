@@ -200,7 +200,7 @@ const fecha = document.getElementById("fecha");
 const estado = document.getElementById("estado");
 
 estado.addEventListener("click", () => {
-	if (estado.value == "Rentado") {
+	if (estado.value === "Rentado") {
 		fecha.disabled = false;
 	} else {
 		fecha.value = "";

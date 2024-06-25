@@ -39,7 +39,8 @@ historialVehiculos.addEventListener("click", (e) => {
 			body: new URLSearchParams({
 				idprimary: idPrimary.value, // agregada para actualizar el historial
 				idv: idvehiculo.value,
-				fecha: fechahistorial.value,
+				fecha: fechaHistorial.value,
+				// fecha: fechahistorial.value,
 				servicio: servicio.value,
 				lugar: lugar.value,
 				costo: costo.value,

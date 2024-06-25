@@ -95,13 +95,21 @@
 /*  PANEL */
 
 .panel {
-	background-color: #212529;
+	/* background-color: #212529; */
 
 	border-radius: 5px;
 	margin-top: 5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	background-color: rgb(58, 58, 58);
+	background-image: url("../images/panel-cover.jpg");
+	background-attachment: fixed;
+	background-blend-mode: soft-light;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 .panel__top {

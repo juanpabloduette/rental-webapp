@@ -69,6 +69,7 @@
             padding: 20px;
             background-color: #212529;
             /* background-color: #000000; */
+            border: 1px solid #30363d;
             border-radius: 10px;
             margin: auto;
         }

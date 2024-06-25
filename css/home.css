@@ -50,9 +50,9 @@
 	/* Sombra para indicar el foco */
 }
 
-.buttons-excel,
-.buttons-pdf,
-.buttons-print {
+.dt-buttons .buttons-excel,
+.dt-buttons .buttons-pdf,
+.dt-buttons .buttons-print {
 	background-color: #343a40;
 }
 

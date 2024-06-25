@@ -196,6 +196,7 @@ if ($varsesion == null || $varsesion == '') {
                                     <option value="Scooter W150">Scooter W150</option>
                                     <option value="Scooter 125cc">Scooter 125cc</option>
                                     <option value="Bicicleta">Bicicleta</option>
+                                    <option value="Buggy Safari 400">Buggy Safari 400</option>
                                 </select>
                             </div>
                             <div class="form-group my-1">
@@ -236,6 +237,7 @@ if ($varsesion == null || $varsesion == '') {
                                     <option value="ATV"></option>
                                     <option value="Scooter"></option>
                                     <option value="Bicicleta"></option>
+                                    <option value="Buggy"></option>
                                 </datalist>
                             </div>
                         </div>

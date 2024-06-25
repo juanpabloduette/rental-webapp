@@ -67,8 +67,8 @@
 
         .box-form {
             padding: 20px;
-            background-color: #212529;
-            /* background-color: #000000; */
+            /* background-color: #212529; */
+            background-color: #000000;
             border: 1px solid #30363d;
             border-radius: 10px;
             margin: auto;
@@ -82,6 +82,11 @@
         input[name=usuario],
         input[name=password] {
             padding-left: 40px !important;
+            background-color: #212529;
+        }
+
+        .input-login::placeholder {
+            color: #30363d;
         }
 
         .input__icon {

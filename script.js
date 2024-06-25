@@ -97,7 +97,9 @@ function PanelRender() {
 				<div class='panel-bicycle'>
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
-
+				<div class='panel-buggy'>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
+				</div>
             </div>
             <div class="panel_no-disponibles">
                 <div class="panel-span panel-span-2">No disponibles</div>
@@ -110,6 +112,9 @@ function PanelRender() {
 				<div class='panel-bicycle'>
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
+				<div class='panel-buggy'>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
+				</div>
             </div>
             <div class="panel_rentados">
                 <div class="panel-span panel-span-3">Rentados</div>
@@ -121,6 +126,9 @@ function PanelRender() {
 				</div>
 				<div class='panel-bicycle'>
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
+				</div>
+					<div class='panel-buggy'>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
 				</div>
             </div>
 	`;
@@ -339,7 +347,7 @@ function Eliminar(id, cod) {
 	borrarBusqueda.style.display = "none"; //borra cerrar de busqueda
 	buscar.value = ""; //borra campo de busqueda
 	Swal.fire({
-		title: "Esta seguro de eliminar el registro N° " + cod + " ?",
+		title: "Esta seguro de eliminar el vehículo N° " + cod + " ?",
 		// text: "No podra volver atras",
 		icon: "warning",
 		showCancelButton: true,
@@ -396,7 +404,7 @@ function Editar(id) {
 			cancelar.style.display = "block";
 
 			cardTitle.style.color = "black";
-			cardTitle.textContent = "Actualizar registro";
+			cardTitle.textContent = "Actualizar vehículo";
 			cardHeader.classList.remove("bg-dark");
 			cardHeader.style.backgroundColor = "#ffc107";
 

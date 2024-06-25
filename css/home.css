@@ -96,6 +96,7 @@
 
 .panel {
 	background-color: #212529;
+
 	border-radius: 5px;
 	margin-top: 5px;
 	display: flex;
@@ -133,11 +134,6 @@
 	align-items: center;
 	padding: 2px;
 	margin: 10px;
-}
-
-.panel_disponibles,
-.panel_no-disponibles,
-.panel_rentados {
 	flex-direction: column;
 	background-color: #343a40;
 	border-radius: 5px;
@@ -168,7 +164,8 @@
 
 .panel-atv,
 .panel-scooter,
-.panel-bicycle {
+.panel-bicycle,
+.panel-buggy {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -502,6 +499,13 @@ input:disabled {
 	.panel__top__top {
 		flex-direction: column;
 		display: flex;
+	}
+
+	.panel_disponibles,
+	.panel_no-disponibles,
+	.panel_rentados {
+		margin: 2px;
+		min-width: 100px;
 	}
 
 	.panel__top__top button {

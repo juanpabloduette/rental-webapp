@@ -51,7 +51,7 @@ if ($varsesion == null || $varsesion == '') {
     <div class="container panel">
         <div class="panel__top__top">
             <!-- <button class="btn btn-outline-warning btn-block">Ingresar renta <i class="fa-solid fa-file-import"></i></button> -->
-            <button class="btn btn-outline-warning btn-block" data-bs-target='#modalventas' data-bs-toggle='modal'>Historial de rentas<i class="fa-solid fa-hand-holding-dollar"></i></button>
+            <button class="btn btn-outline-warning btn-block" data-bs-target='#modalventas' data-bs-toggle='modal' onclick=listarrentas()>Historial de rentas<i class="fa-solid fa-hand-holding-dollar"></i></button>
         </div>
         <div class="panel__top" id="panel--top">
             <!-- Contenido Panel -->
@@ -384,12 +384,27 @@ if ($varsesion == null || $varsesion == '') {
                                                         <input type="text" class="form-control form-control-sm field-lugar mx-1" id="precioventa" placeholder="Precio" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
+                                                        <label for="pagorenta">Pago</label>
+                                                        <!-- <input type="text" class="form-control form-control-sm field-lugar mx-1" id="pagoventa" placeholder="Pago" autocomplete="off"> -->
+                                                        <select name="producto" id="pagorenta" class="form-select form-select-sm mx-1">
+                                                            <option value=""></option>
+                                                            <option value="Efectivo">Efectivo</option>
+                                                            <option value="Tarjeta">Tarjeta</option>
+                                                            <option value="Efectivo y tarjeta">Efectivo y Tarjeta</option>
+                                                            <option value="Otro">Otro</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="label-input">
                                                         <label for="vendedorventa">Vendedor</label>
                                                         <input type="text" class="form-control form-control-sm field-notas mx-1" id="vendedorventa" placeholder="Vendedor" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="notaventa">Nota (opcional)</label>
                                                         <input type="text" class="form-control form-control-sm field-notas mx-1" id="notaventa" placeholder="Nota" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="idnumerorenta">Precio</label>
+                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="idnumerorenta" placeholder="Nro Renta" autocomplete="off">
                                                     </div>
                                                 </form>
                                                 <div class="btn-form-historial-box">
@@ -400,22 +415,24 @@ if ($varsesion == null || $varsesion == '') {
                                         </div>
                                     </div>
                                 </div>
-                                <table id="table-ventas" class="table table-striped table-sm align-middle table-hover" data-bs-theme="dark" style="width: 100%">
+                                <table id="table-rentas" class="table table-striped table-sm align-middle table-hover" data-bs-theme="dark" style="width: 100%">
                                     <thead class="table-secondary">
                                         <tr>
                                             <th>Desde</th>
                                             <th>Hasta</th>
                                             <th>Cant. días</th>
-                                            <th>Nro. Vehículo</th>
+                                            <th>N° Vehículo</th>
                                             <th>Hora salida</th>
                                             <th>Hora llegada</th>
                                             <th>Precio</th>
+                                            <th>Pago</th>
                                             <th>Vendedor</th>
                                             <th>Nota</th>
+                                            <th>N° Renta</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="table-group-divider" id="tbodyventas">
-                                        <!-- Contenido Historial -->
+                                    <tbody class="table-group-divider" id="tbodyrentas">
+                                        <!-- Contenido Rentas -->
                                     </tbody>
                                 </table>
                             </div>
@@ -444,7 +461,7 @@ if ($varsesion == null || $varsesion == '') {
     <script src="js/listarhistorial.js"></script>
     <script src="js/borraridhistorial.js"></script>
     <script src="js/editarhistorial.js"></script>
-    <script src="js/ventas.js"></script>
+    <script src="js/listarrentas.js"></script>
 </body>
 
 </html>

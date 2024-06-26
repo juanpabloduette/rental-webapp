@@ -62,3 +62,48 @@ function tableExecute() {
 		}
 	});
 }
+
+let tableRentas;
+
+// $(document).ready(function () {
+// 	tableRentasExecute();
+// });
+
+function tableRentasExecute() {
+	table = $("#table-rentas").DataTable({
+		dom: '<"top"Bf>rt<"bottom"lip><"clear">',
+		buttons: [
+			{
+				extend: "excelHtml5",
+				text: 'Excel <i class="fas fa-file-excel"></i>',
+				titleAttr: "Export to Excel",
+				className: "btn btn-sm",
+			},
+			{
+				extend: "pdfHtml5",
+				text: 'PDF <i class="fas fa-file-pdf"></i>',
+				titleAttr: "Export to PDF",
+				className: "btn btn-sm",
+			},
+			{
+				extend: "print",
+				text: 'Print <i class="fas fa-print"></i>',
+				titleAttr: "Print Table",
+				className: "btn btn-sm",
+			},
+		],
+		responsive: true,
+		language: {
+			url: "language/es-MX.json",
+		},
+		columnDefs: [
+			{
+				orderable: false,
+				targets: [6],
+			},
+			{ responsivePriority: 1, targets: 6 },
+			{ responsivePriority: 2, targets: 1 },
+		],
+		pagingType: "simple_numbers",
+	});
+}

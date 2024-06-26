@@ -82,12 +82,12 @@
         input[name=usuario],
         input[name=password] {
             padding-left: 40px !important;
-            background-color: #212529;
+            /* background-color: #212529; */
         }
 
-        .input-login::placeholder {
+        /* .input-login::placeholder {
             color: #30363d;
-        }
+        } */
 
         .input__icon {
             position: absolute;

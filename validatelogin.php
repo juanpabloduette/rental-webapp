@@ -7,8 +7,10 @@ if (isset($_POST['usuario']) && !empty($_POST['usuario']) && isset($_POST['passw
     $password = $_POST['password'];
     $_SESSION['usuario'] = $usuario;
     require "conexion.php";
-    $consulta = $pdo->prepare("SELECT * FROM usuarios WHERE nom_usuario = '$usuario' AND password = '$password'");
-    $consulta->execute();
+    $consulta = $pdo->prepare("SELECT * FROM usuarios WHERE nom_usuario = :usuario AND password = :password");
+    $consulta->execute(['usuario' => $usuario, 'password' => $password]);
+    // $consulta = $pdo->prepare("SELECT * FROM usuarios WHERE nom_usuario = '$usuario' AND password = '$password'");
+    // $consulta->execute();
 
     $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
 

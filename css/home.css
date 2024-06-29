@@ -11,6 +11,11 @@
 
 /* DATATABLE */
 
+/* table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
+	border-left: #495057;
+} */
+
 .dt-length {
 	margin-top: 3px;
 }

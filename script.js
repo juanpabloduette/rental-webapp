@@ -101,21 +101,6 @@ function PanelRender() {
 					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
 				</div>
             </div>
-            <div class="panel_no-disponibles">
-                <div class="panel-span panel-span-2">No disponibles</div>
-                <div class='panel-atv'>
-					<img src='./images/atv.svg' style='width: 30px;'/><p>${CountAtvNoDisp}</p>
-				</div>
-				<div class='panel-scooter'>
-					<img src='./images/scooter.svg' style='width: 28px;'/><p>${CountScooterNoDisp}</p>
-				</div>
-				<div class='panel-bicycle'>
-					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
-				</div>
-				<div class='panel-buggy'>
-					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
-				</div>
-            </div>
             <div class="panel_rentados">
                 <div class="panel-span panel-span-3">Rentados</div>
                 <div class='panel-atv'>
@@ -128,6 +113,21 @@ function PanelRender() {
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
 					<div class='panel-buggy'>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
+				</div>
+            </div>
+			<div class="panel_no-disponibles">
+                <div class="panel-span panel-span-2">No disponibles</div>
+                <div class='panel-atv'>
+					<img src='./images/atv.svg' style='width: 30px;'/><p>${CountAtvNoDisp}</p>
+				</div>
+				<div class='panel-scooter'>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p>${CountScooterNoDisp}</p>
+				</div>
+				<div class='panel-bicycle'>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
+				</div>
+				<div class='panel-buggy'>
 					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
 				</div>
             </div>
@@ -199,7 +199,7 @@ function validacionDatos() {
 const fecha = document.getElementById("fecha");
 const estado = document.getElementById("estado");
 
-estado.addEventListener("click", () => {
+estado.addEventListener("change", () => {
 	if (estado.value === "Rentado") {
 		fecha.disabled = false;
 	} else {

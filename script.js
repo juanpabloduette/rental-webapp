@@ -348,7 +348,8 @@ function Eliminar(id, cod) {
 	buscar.value = ""; //borra campo de busqueda
 	Swal.fire({
 		title: "Esta seguro de eliminar el vehículo N° " + cod + " ?",
-		// text: "No podra volver atras",
+		html:
+			'<p style="color: #E1E1E1; text-align: center; font-size: 14px;">* Se eliminará también todo el historial</p>',
 		icon: "warning",
 		showCancelButton: true,
 		confirmButtonColor: "#3085d6",
@@ -357,9 +358,16 @@ function Eliminar(id, cod) {
 		cancelButtonText: "No",
 	}).then((result) => {
 		if (result.isConfirmed) {
+			const data = {
+				id: id,
+				cod: cod,
+			};
 			fetch("eliminar.php", {
 				method: "POST",
-				body: id,
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data),
 			})
 				.then((response) => response.text())
 				.then((response) => {

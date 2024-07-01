@@ -14,11 +14,10 @@ window.addEventListener("load", () => {
 		})
 			.then((response) => response.json())
 			.then(({ success }) => {
-				// console.log(success);
 				if (success === 1) {
 					location.href = "home.php";
 				} else {
-					// alert("Los datos son incorrectos");
+					// Datos incorrectos
 					alerta();
 				}
 			});
@@ -35,7 +34,6 @@ window.addEventListener("load", () => {
         `;
 		setTimeout(() => {
 			alertt.classList.add("show");
-			// alert.style.display = 'none';
 		}, 3000);
 	}
 

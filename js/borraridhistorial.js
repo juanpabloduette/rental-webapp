@@ -1,7 +1,7 @@
 function borrarIdHistorial(id) {
 	// console.log(id);
 	Swal.fire({
-		title: "Eliminar registro ?",
+		title: "Eliminar servicio ?",
 		// text: "No podra volver atras",
 		icon: "warning",
 		showCancelButton: true,

@@ -350,9 +350,9 @@ function Eliminar(id, cod) {
 	cardTitle.textContent = "Ingresar vehículo";
 	codigo.disabled = false;
 	fecha.disabled = true;
-	// borrarDescripcion.style.display = "none";
 	borrarBusqueda.style.display = "none"; //borra cerrar de busqueda
 	buscar.value = ""; //borra campo de busqueda
+	ListarProductos();
 	Swal.fire({
 		title: "Esta seguro de eliminar el vehículo N° " + cod + " ?",
 		html:

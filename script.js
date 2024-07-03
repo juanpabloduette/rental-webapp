@@ -292,6 +292,13 @@ registrar.addEventListener("click", () => {
 						showConfirmButton: true,
 						// timer: 950
 					});
+				} else if (response === "sinmodif") {
+					Swal.fire({
+						icon: "error",
+						title: "Realice un cambio",
+						showConfirmButton: true,
+						// timer: 950
+					});
 				} else {
 					codigo.disabled = false;
 					Swal.fire({

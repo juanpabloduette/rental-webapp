@@ -5,10 +5,7 @@ function listarrentas() {
 	// 	historialVehiculo.innerHTML = `Vehículo: <span class='historial-span'>${cod}</span>`;
 	// 	document.title = `APP RENTAL - Vehículo ${cod}`;
 
-	fetch("listarrentas.php", {
-		method: "POST",
-		body: cod,
-	})
+	fetch("listarrentas.php")
 		.then((response) => response.text())
 		.then((response) => {
 			if (table) {

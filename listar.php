@@ -16,10 +16,46 @@ if (empty($resultado)) {
 }
 
 
+function iconVehicle($desc_vehiculo)
+{
+    $atv = "<img src='./images/atv.svg' style='width: 30px; margin-right: 5px;'/>";
+    $scooter = "<img src='./images/scooter.svg' style='width: 28px; margin-right: 5px;'/>";
+    $buggy = "<img src='./images/buggy.svg' style='width: 26px; margin-right: 5px;'/>";
+    $bicicleta = "<img src='./images/bicycle.svg' style='width: 26px; margin-right: 5px;'/>";
+    switch ($desc_vehiculo) {
+        case 'ATV 150cc':
+            return $atv;
+            break;
+        case 'ATV 200cc':
+            return $atv;
+            break;
+        case 'Scooter Vitalia 150cc':
+            return $scooter;
+            break;
+        case 'Scooter 125cc':
+            return $scooter;
+            break;
+        case 'Scooter W150':
+            return $scooter;
+            break;
+        case 'Buggy Safari 400':
+            return $buggy;
+            break;
+        case 'Bicicleta':
+            return $bicicleta;
+            break;
+        default:
+            # code...
+            break;
+    };
+};
+
 foreach ($resultado as $data) {
     $color = 'green';
     $estado = $data['estado'];
-
+    $id = $data['id'];
+    $codigo = $data['codigo'];
+    $desc_vehiculo = $data['producto'];
     if ($estado == "Rentado") {
         $color = 'yellow';
     } else if ($estado == "No Disp.") {
@@ -36,9 +72,7 @@ foreach ($resultado as $data) {
     } else {
         $fechaRentado = '';
     };
-    $id = $data['id'];
-    $codigo = $data['codigo'];
-    $desc_vehiculo = $data['producto'];
+
     echo "<tr>
             <td class='td-celdas td-celdas-vehiculo' style='text-align:center;'><span class='td-span'>" . $codigo . "</td>
             <td class='td-color'>
@@ -48,7 +82,12 @@ foreach ($resultado as $data) {
                 </div>
             </td>
             <td class='td-celdas' id='fecha'>" . $data['estado'] . " " . $fechaRentado . "</td>
-            <td class='td-celdas'>" . $data['producto'] . "</td>
+            <td class='td-celdas'>
+            <div class='td-producto' style='display: flex; justify-content:flex-start; align-items:center;'>
+              " . iconVehicle($desc_vehiculo) . "
+                <div style='font-size: 12px;'>$desc_vehiculo</div>
+            </div>
+            </td>
             <td class='td-celdas' style='text-align: center;'>" . $data['tienda'] . "</td>
             <td style='text-align:center; padding:0.20rem;'>
                 <div class='btn-content' style='display: flex; justify-content: center;'>

@@ -183,7 +183,6 @@ if ($varsesion == null || $varsesion == '') {
                             </div>
                             <div class="form-group my-1" style='position: relative;'>
                                 <label for="producto">Vehículo</label>
-                                <!-- <i class="fa-solid fa-xmark cerrar-descripcion"></i> -->
                                 <select name="producto" id="producto" class="form-select">
                                     <option value=""></option>
                                     <option value="ATV 150cc">ATV 150cc</option>

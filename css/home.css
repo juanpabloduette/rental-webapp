@@ -462,9 +462,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
 	border-radius: 1px;
 }
 
-#fecha:disabled {
+#fecha:disabled,
+#codigo:disabled {
 	background-color: #212529;
-	color: #999999;
+	color: #ffffff;
 	cursor: not-allowed;
 	border-color: #212529;
 }

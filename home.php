@@ -28,9 +28,9 @@ if ($varsesion == null || $varsesion == '') {
     <script src="https://kit.fontawesome.com/81e9130226.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/datatables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="css/responsive.bootstrap5.css">
-    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/dark.css">
 </head>
 
 <body style="background-color: black;">
@@ -444,10 +444,9 @@ if ($varsesion == null || $varsesion == '') {
     <script src="js/libraries/jquery.min.js"></script>
     <script src="js/libraries/bootstrap.bundle.min.js"></script>
     <script src="js/libraries/dataTables.js"></script>
-    <!-- <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script> -->
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
+    <script src="js/libraries/dataTables.bootstrap5.js"></script>
+    <script src="js/libraries/dataTables.responsive.js"></script>
+    <script src="js/libraries/responsive.bootstrap5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script src="js/datatables.min.js"></script>

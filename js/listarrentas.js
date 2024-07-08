@@ -1,5 +1,5 @@
 // const historialVehiculo = document.getElementById("exampleModalLabel");
-const tbodyRentas = document.getElementById("tbodvrentas");
+const tbodyRentas = document.getElementById("tbodyrentas");
 
 function listarrentas() {
 	// 	historialVehiculo.innerHTML = `Vehículo: <span class='historial-span'>${cod}</span>`;

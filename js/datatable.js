@@ -106,4 +106,23 @@ function tableRentasExecute() {
 		],
 		pagingType: "simple_numbers",
 	});
+	$("#modalventas").on("shown.bs.modal", function () {
+		try {
+			if (table && table.columns && typeof table.columns.adjust === "function") {
+				table.columns.adjust();
+			}
+			if (
+				table &&
+				table.responsive &&
+				typeof table.responsive.recalc === "function"
+			) {
+				table.responsive.recalc();
+			}
+		} catch (error) {
+			console.error(
+				"Error adjusting table columns or recalculating responsiveness:",
+				error
+			);
+		}
+	});
 }

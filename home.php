@@ -390,6 +390,16 @@ if ($varsesion == null || $varsesion == '') {
                                                         </select>
                                                     </div>
                                                     <div class="label-input">
+                                                        <label for="pagorenta">Deposito</label>
+                                                        <!-- <input type="text" class="form-control form-control-sm field-lugar mx-1" id="pagoventa" placeholder="Pago" autocomplete="off"> -->
+                                                        <select name="deposito" id="deposito" class="form-select form-select-sm mx-1">
+                                                            <option value=""></option>
+                                                            <option value="Efectivo">Efectivo</option>
+                                                            <option value="Tarjeta">Pasaporte</option>
+                                                            <option value="Otro">Otro</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="label-input">
                                                         <label for="vendedorventa">Vendedor</label>
                                                         <input type="text" class="form-control form-control-sm field-notas mx-1" id="vendedorventa" placeholder="Vendedor" autocomplete="off">
                                                     </div>
@@ -398,7 +408,7 @@ if ($varsesion == null || $varsesion == '') {
                                                         <input type="text" class="form-control form-control-sm field-notas mx-1" id="notaventa" placeholder="Nota" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="idnumerorenta">Precio</label>
+                                                        <label for="idnumerorenta">Nro Renta</label>
                                                         <input type="text" class="form-control form-control-sm field-lugar mx-1" id="idnumerorenta" placeholder="Nro Renta" autocomplete="off">
                                                     </div>
                                                 </form>
@@ -421,9 +431,11 @@ if ($varsesion == null || $varsesion == '') {
                                             <th>Hora llegada</th>
                                             <th>Precio</th>
                                             <th>Pago</th>
+                                            <th>Deposito</th>
                                             <th>Vendedor</th>
                                             <th>Nota</th>
                                             <th>N° Renta</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-group-divider" id="tbodyrentas">

@@ -20,7 +20,7 @@ if ($varsesion == null || $varsesion == '') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APP RENTAL</title>
+    <title>APP ADMIN RENTAL</title>
     <link rel="stylesheet" href="css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -443,8 +443,8 @@ if ($varsesion == null || $varsesion == '') {
     <script src="js/libraries/sweetalert2.min.js"></script>
     <script src="js/libraries/jquery.min.js"></script>
     <script src="js/libraries/bootstrap.bundle.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    <script src="js/libraries/dataTables.js"></script>
+    <!-- <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script> -->
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>

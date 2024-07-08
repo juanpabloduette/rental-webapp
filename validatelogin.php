@@ -1,14 +1,12 @@
 <?php
 session_start();
-require "conexion.php"; // Asegúrate de incluir tu archivo de conexión
+require "conexion.php";
 
 if (isset($_POST['usuario']) && !empty($_POST['usuario']) && isset($_POST['password']) && !empty($_POST['password'])) {
 
-    // Sanitización y filtrado de entrada
     $usuario = filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    // Consulta para obtener el hash almacenado
     $consulta = $pdo->prepare("SELECT * FROM usuarios WHERE nom_usuario = :usuario");
     $consulta->execute(['usuario' => $usuario]);
     $resultado = $consulta->fetch(PDO::FETCH_ASSOC);

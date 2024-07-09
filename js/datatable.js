@@ -99,9 +99,9 @@ function tableRentasExecute() {
 		columnDefs: [
 			{
 				orderable: false,
-				targets: [6],
+				targets: [11],
 			},
-			{ responsivePriority: 1, targets: 6 },
+			{ responsivePriority: 1, targets: 11 },
 			{ responsivePriority: 2, targets: 1 },
 		],
 		pagingType: "simple_numbers",

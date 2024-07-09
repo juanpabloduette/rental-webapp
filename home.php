@@ -339,24 +339,28 @@ if ($varsesion == null || $varsesion == '') {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button-modal-close-ventas"></button>
                                 </div>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body modal-body-ventas">
                                 <div class="accordion py-1 accordion-flush accordion-dark accordion-flush" id="accordionFlush-ventas">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
-                                            <button class="accordion-button btn-sm collapsed custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id="btn-accordion-ventas">
+                                            <button class="accordion-button btn-sm collapsed custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOneRentas" aria-expanded="false" aria-controls="flush-collapseOne" id="btn-accordion-rentas">
                                                 Agregar renta +
                                             </button>
                                         </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                        <div id="flush-collapseOneRentas" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
                                                 <form action="" class="form-historial" id="frm-ventas" method="POST">
                                                     <div class="label-input">
+                                                        <label for="fecharenta">Fecha</label>
+                                                        <input type="date" class="form-control form-control-sm field-fecharenta mx-1" id="fechaventa" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
                                                         <label for="fechaventadesde">Desde</label>
-                                                        <input type="date" class="form-control form-control-sm field-fechaventadesde mx-1" id="fechaventadesde" autocomplete="off">
+                                                        <input type="datetime-local" class="form-control form-control-sm field-fechaventadesde mx-1" id="fechaventadesde" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="fechaventahasta">Hasta</label>
-                                                        <input type="date" class="form-control form-control-sm field-fechaventahasta mx-1" id="fechaventahasta" autocomplete="off">
+                                                        <input type="datetime-local" class="form-control form-control-sm field-fechaventahasta mx-1" id="fechaventahasta" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="cantdias">Cant. días</label>
@@ -367,35 +371,28 @@ if ($varsesion == null || $varsesion == '') {
                                                         <input type="text" class="form-control form-control-sm field-vehiculoventa mx-1" id="vehiculoventa" placeholder="Vehiculo" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="horasalidaventa">Hora salida</label>
-                                                        <input type="time" class="form-control form-control-sm field-kms mx-1" id="horasalidaventa" placeholder="Hora Salida" autocomplete="off">
-                                                    </div>
-                                                    <div class="label-input">
-                                                        <label for="horallegadaventa">Hora llegada</label>
-                                                        <input type="time" class="form-control form-control-sm field-kms mx-1" id="horallegadaventa" placeholder="Hora Llegada" autocomplete="off">
-                                                    </div>
-                                                    <div class="label-input">
                                                         <label for="precioventa">Precio</label>
                                                         <input type="text" class="form-control form-control-sm field-lugar mx-1" id="precioventa" placeholder="Precio" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="pagorenta">Pago</label>
+                                                        <label for="pagoventa">Pago</label>
                                                         <!-- <input type="text" class="form-control form-control-sm field-lugar mx-1" id="pagoventa" placeholder="Pago" autocomplete="off"> -->
-                                                        <select name="producto" id="pagorenta" class="form-select form-select-sm mx-1">
+                                                        <select name="pagoventa" id="pagoventa" class="form-select form-select-sm mx-1">
                                                             <option value=""></option>
                                                             <option value="Efectivo">Efectivo</option>
                                                             <option value="Tarjeta">Tarjeta</option>
                                                             <option value="Efectivo y tarjeta">Efectivo y Tarjeta</option>
+                                                            <option value="No pagó">No pagó</option>
                                                             <option value="Otro">Otro</option>
                                                         </select>
                                                     </div>
                                                     <div class="label-input">
-                                                        <label for="pagorenta">Deposito</label>
+                                                        <label for="depositoventa">Deposito</label>
                                                         <!-- <input type="text" class="form-control form-control-sm field-lugar mx-1" id="pagoventa" placeholder="Pago" autocomplete="off"> -->
-                                                        <select name="deposito" id="deposito" class="form-select form-select-sm mx-1">
+                                                        <select name="depositoventa" id="depositoventa" class="form-select form-select-sm mx-1">
                                                             <option value=""></option>
                                                             <option value="Efectivo">Efectivo</option>
-                                                            <option value="Tarjeta">Pasaporte</option>
+                                                            <option value="Pasaporte">Pasaporte</option>
                                                             <option value="Otro">Otro</option>
                                                         </select>
                                                     </div>
@@ -409,12 +406,12 @@ if ($varsesion == null || $varsesion == '') {
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="idnumerorenta">Nro Renta</label>
-                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="idnumerorenta" placeholder="Nro Renta" autocomplete="off">
+                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="idnumerorenta" placeholder="Nro Renta" autocomplete="off" disabled>
                                                     </div>
                                                 </form>
                                                 <div class="btn-form-historial-box">
-                                                    <button class="btn btn-success btn-block btn-sm btn-form-historial mx-1">Ingresar</button>
-                                                    <button class="btn btn-danger btn-block btn-sm btn-form-historial-cancelar mx-1">Cancelar</button>
+                                                    <button class="btn btn-success btn-block btn-sm btn-form-historial mx-1" id="historial-rentas">Ingresar</button>
+                                                    <button class="btn btn-danger btn-block btn-sm btn-form-historial-cancelar mx-1" style="display:none;" id="historial-rentas-cancelar">Cancelar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -423,19 +420,18 @@ if ($varsesion == null || $varsesion == '') {
                                 <table id="table-rentas" class="table table-striped table-sm align-middle table-hover" data-bs-theme="dark" style="width: 100%">
                                     <thead class="table-secondary">
                                         <tr>
+                                            <th>Fecha</th>
                                             <th>Desde</th>
                                             <th>Hasta</th>
-                                            <th>Cant. días</th>
-                                            <th>N° Vehículo</th>
-                                            <th>Hora salida</th>
-                                            <th>Hora llegada</th>
+                                            <th>Días</th>
+                                            <th>Vehículo</th>
                                             <th>Precio</th>
                                             <th>Pago</th>
-                                            <th>Deposito</th>
+                                            <th>Depósito</th>
                                             <th>Vendedor</th>
                                             <th>Nota</th>
                                             <th>N° Renta</th>
-                                            <th>Acciones</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-group-divider" id="tbodyrentas">
@@ -444,7 +440,7 @@ if ($varsesion == null || $varsesion == '') {
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="button-modal-close-footer">Cerrar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="button-modal-close-footer-ventas">Cerrar</button>
                             </div>
                         </div>
                     </div>
@@ -469,6 +465,7 @@ if ($varsesion == null || $varsesion == '') {
     <script src="js/borraridhistorial.js"></script>
     <script src="js/editarhistorial.js"></script>
     <script src="js/listarrentas.js"></script>
+    <script src="js/editarrentas.js"></script>
 </body>
 
 </html>

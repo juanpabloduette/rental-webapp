@@ -466,6 +466,7 @@ if ($varsesion == null || $varsesion == '') {
     <script src="js/editarhistorial.js"></script>
     <script src="js/listarrentas.js"></script>
     <script src="js/editarrentas.js"></script>
+    <script src="js/ventas.js"></script>
 </body>
 
 </html>

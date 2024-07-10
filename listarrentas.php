@@ -21,7 +21,6 @@ foreach ($resultado as $data) {
     $deposito = $data['deposito'];
     $vendedor = $data['vendedor'];
     $nota = $data['nota'];
-    $nrorenta = $data['nrorenta'];
 
     echo "<tr>
             <td>$fecha</td>
@@ -34,7 +33,7 @@ foreach ($resultado as $data) {
             <td>$deposito</td>
             <td>$vendedor</td>
             <td>$nota</td>
-            <td>$nrorenta</td>
+            <td>$id</td>
             <td>
                 <div class='acciones-buttons'>
                     <div style='position: relative;'>

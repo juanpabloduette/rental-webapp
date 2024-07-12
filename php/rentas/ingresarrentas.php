@@ -6,6 +6,7 @@ $fechaventadesde = $_POST['fechaventadesde'];
 $fechaventahasta = $_POST['fechaventahasta'];
 $cantdias = $_POST['cantdias'];
 $vehiculoventa = $_POST['vehiculoventa'];
+$clienteventa = $_POST['clienteventa'];
 $precioventa = $_POST['precioventa'];
 $pagoventa = $_POST['pagoventa'];
 $depositoventa = $_POST['depositoventa'];
@@ -13,6 +14,17 @@ $vendedorventa = $_POST['vendedorventa'];
 $notaventa = $_POST['notaventa'];
 
 require("../../conexion.php");
+
+// Validar si el vehículo existe en la tabla de vehículos registrados
+$vehiculo_cons = $pdo->prepare("SELECT * FROM productos WHERE codigo = :vehiculoventa");
+$vehiculo_cons->bindParam(":vehiculoventa", $vehiculoventa);
+$vehiculo_cons->execute();
+$vehiculo_resultado = $vehiculo_cons->fetch(PDO::FETCH_ASSOC);
+
+if (!$vehiculo_resultado) {
+    echo "noexistevehiculo";
+    die();
+}
 
 $cons = $pdo->prepare("SELECT * FROM rentas WHERE id = :id");
 $cons->bindParam(":id", $idprimary);
@@ -28,6 +40,7 @@ if (!empty($idprimary)) {
         $fechaventahasta_db = $data['hasta'];
         $cantdias_db = $data['dias'];
         $vehiculoventa_db = $data['nrovehiculo'];
+        $clienteventa_db = $data['cliente'];
         $precioventa_db = $data['precio'];
         $pagoventa_db = $data['pago'];
         $depositoventa_db = $data['deposito'];
@@ -53,6 +66,8 @@ if (!empty($idprimary)) {
         &&
         $vehiculoventa == $vehiculoventa_db
         &&
+        $clienteventa == $clienteventa_db
+        &&
         $precioventa == $precioventa_db
         &&
         $pagoventa === $pagoventa_db
@@ -70,12 +85,13 @@ if (!empty($idprimary)) {
 
 
 if (!empty($idprimary)) {
-    $query = $pdo->prepare("UPDATE rentas SET fecha = :fvt, desde = :fde, hasta = :fht, dias = :ctd, nrovehiculo = :nvv, precio = :prc, pago = :pgo, deposito = :dep, vendedor = :ven, nota = :nta WHERE id = :id");
+    $query = $pdo->prepare("UPDATE rentas SET fecha = :fvt, desde = :fde, hasta = :fht, dias = :ctd, nrovehiculo = :nvv, cliente = :clv, precio = :prc, pago = :pgo, deposito = :dep, vendedor = :ven, nota = :nta WHERE id = :id");
     $query->bindParam(":fvt", $fechaventa);
     $query->bindParam(":fde", $fechaventadesde);
     $query->bindParam(":fht", $fechaventahasta);
     $query->bindParam(":ctd", $cantdias);
     $query->bindParam(":nvv", $vehiculoventa);
+    $query->bindParam(":clv", $clienteventa);
     $query->bindParam(":prc", $precioventa);
     $query->bindParam(":pgo", $pagoventa);
     $query->bindParam(":dep", $depositoventa);
@@ -85,12 +101,13 @@ if (!empty($idprimary)) {
     $query->execute();
     echo "actualizado";
 } else {
-    $query = $pdo->prepare("INSERT INTO rentas (fecha,desde,hasta,dias,nrovehiculo,precio,pago,deposito,vendedor,nota,id) VALUES (:fvt, :fde, :fht, :ctd, :nvv, :prc, :pgo, :dep, :ven, :nta, :idr)");
+    $query = $pdo->prepare("INSERT INTO rentas (fecha,desde,hasta,dias,nrovehiculo,cliente,precio,pago,deposito,vendedor,nota,id) VALUES (:fvt, :fde, :fht, :ctd, :nvv, :clv, :prc, :pgo, :dep, :ven, :nta, :idr)");
     $query->bindParam(":fvt", $fechaventa);
     $query->bindParam(":fde", $fechaventadesde);
     $query->bindParam(":fht", $fechaventahasta);
     $query->bindParam(":ctd", $cantdias);
     $query->bindParam(":nvv", $vehiculoventa);
+    $query->bindParam(":clv", $clienteventa);
     $query->bindParam(":prc", $precioventa);
     $query->bindParam(":pgo", $pagoventa);
     $query->bindParam(":dep", $depositoventa);

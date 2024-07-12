@@ -95,7 +95,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
 	border-color: transparent;
 	/* Asegura que el borde no aparezca */
 }
-
+.dt-center {
+	text-align: center !important;
+}
 /* FIN DATATABLE */
 /*  PANEL */
 

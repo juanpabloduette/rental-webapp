@@ -20,6 +20,9 @@ function PanelRender() {
 	let CountScooterNoDisp = 0;
 	let CountScooterRentado = 0;
 	let CountBicycle = 0;
+	let CountBuggy = 0;
+	let CountBuggyNoDisp = 0;
+	let CountBuggyRentado = 0;
 
 	fetch("panel.php")
 		.then((response) => response.json())
@@ -73,6 +76,15 @@ function PanelRender() {
 							CountScooterRentado++;
 						}
 						break;
+					case "Buggy Safari 400":
+						if (element.estado === "Disponible") {
+							CountBuggy++;
+						} else if (element.estado === "No Disp.") {
+							CountBuggyNoDisp++;
+						} else {
+							CountBuggyRentado++;
+						}
+						break;
 					case "Bicicleta":
 						if (element.estado === "Disponible") {
 							CountBicycle++;
@@ -98,7 +110,7 @@ function PanelRender() {
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
 				<div class='panel-buggy'>
-					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p>${CountBuggy}</p>
 				</div>
             </div>
             <div class="panel_rentados">
@@ -113,7 +125,7 @@ function PanelRender() {
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
 					<div class='panel-buggy'>
-					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p>${CountBuggyRentado}</p>
 				</div>
             </div>
 			<div class="panel_no-disponibles">
@@ -128,7 +140,7 @@ function PanelRender() {
 					<img src='./images/bicycle.svg' style='width: 26px;'/><p>${CountBicycle}</p>
 				</div>
 				<div class='panel-buggy'>
-					<img src='./images/buggy.svg' style='width: 26px;'/><p>0</p>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p>${CountBuggyNoDisp}</p>
 				</div>
             </div>
 	`;

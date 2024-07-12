@@ -20,6 +20,10 @@ window.addEventListener("load", () => {
 					// Datos incorrectos
 					alerta();
 				}
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+				alertaServer();
 			});
 	}
 
@@ -30,6 +34,20 @@ window.addEventListener("load", () => {
 		alertt.innerHTML = `
         <div id='alert' style="color: red; padding: 5px 10px;">
             Datos incorrectos
+        </div>
+        `;
+		setTimeout(() => {
+			alertt.classList.add("show");
+		}, 3000);
+	}
+
+	function alertaServer() {
+		if (alertt.classList.contains("show")) {
+			alertt.classList.remove("show");
+		}
+		alertt.innerHTML = `
+        <div id='alert' style="color: red; padding: 5px 10px;">
+            Pruebe más tarde.
         </div>
         `;
 		setTimeout(() => {

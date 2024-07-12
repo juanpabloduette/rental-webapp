@@ -62,7 +62,7 @@ function cancelarActualizarVentas() {
 	historialRentas.classList.remove("btn-warning");
 	btnAccordionRentas.style.backgroundColor = "#343A40";
 	btnAccordionRentas.style.color = "#FFFFFF";
-	btnAccordionRentas.textContent = "Ingresar registro +";
+	btnAccordionRentas.textContent = "Ingresar renta +";
 	editarRentasCancelar.style.display = "none";
 
 	// idPrimary.value = "";
@@ -86,13 +86,14 @@ function editarIdRentas(id) {
 	})
 		.then((response) => response.json())
 		.then((response) => {
-			console.log(response);
+			// console.log(response);
 
 			fechaventa.value = response.fecha;
 			fechaventadesde.value = response.desde;
 			fechaventahasta.value = response.hasta;
 			cantdias.value = response.dias;
 			vehiculoventa.value = response.nrovehiculo;
+			clienteventa.value = response.cliente;
 			precioventa.value = response.precio;
 			pagoventa.value = response.pago;
 			depositoventa.value = response.deposito;
@@ -102,7 +103,7 @@ function editarIdRentas(id) {
 
 			openAccordionVentas();
 			irAlTopVentas();
-			btnAccordionRentas.textContent = "Actualizar registro +";
+			btnAccordionRentas.textContent = "Editar renta +";
 			btnAccordionRentas.style.backgroundColor = "rgb(255, 193, 7)";
 			btnAccordionRentas.style.color = "black";
 			historialRentas.textContent = "Actualizar";

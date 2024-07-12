@@ -1,17 +1,17 @@
-function borrarIdHistorial(id) {
+function borrarIdRenta(id) {
 	// console.log(id);
 	Swal.fire({
-		title: "Eliminar servicio ?",
+		title: "Eliminar renta ?",
 		// text: "No podra volver atras",
 		icon: "warning",
 		showCancelButton: true,
-		confirmButtonColor: "#198754",
+		confirmButtonColor: "#3085d6",
 		cancelButtonColor: "#d33",
 		confirmButtonText: "Si",
 		cancelButtonText: "No",
 	}).then((result) => {
 		if (result.isConfirmed) {
-			fetch("borraridhistorial.php", {
+			fetch("./php/rentas/eliminarrentas.php", {
 				method: "POST",
 				body: id,
 			})
@@ -25,12 +25,14 @@ function borrarIdHistorial(id) {
 							showConfirmButton: false,
 							timer: 950,
 						});
-						listarhistorial((id = undefined), (cod = idv.value));
-						cancelarActualizar();
+						listarrentas();
+						// cancelarActualizar();
+						cancelarActualizarVentas();
 					}
 				});
 		} else {
-			cancelarActualizar();
+			// cancelarActualizar();
+			cancelarActualizarVentas();
 		}
 	});
 }

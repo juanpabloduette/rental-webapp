@@ -16,6 +16,7 @@ foreach ($resultado as $data) {
     $hasta = $data['hasta'];
     $dias = $data['dias'];
     $nrovehiculo = $data['nrovehiculo'];
+    $cliente = $data['cliente'];
     $precio = $data['precio'];
     $pago = $data['pago'];
     $deposito = $data['deposito'];
@@ -28,6 +29,7 @@ foreach ($resultado as $data) {
             <td>$hasta</td>
             <td>$dias</td>
             <td>$nrovehiculo</td>
+            <td>$cliente</td>
             <td>$precio</td>
             <td>$pago</td>
             <td>$deposito</td>
@@ -40,7 +42,7 @@ foreach ($resultado as $data) {
                         <button type='button' class='btn btn-warning btn-box-comment' aria-label='Editar' onclick='editarIdRentas($id)' style='padding: 3px 7px; max-width: 40px; margin: 1px;'><i class='fa-solid fa-file-pen'></i></button>
                     </div>
                     <div style='position: relative;'>
-                        <button type='button' class='btn btn-danger btn-box-danger' aria-label='Borrar' onclick='borrarIdRentas($id)' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
+                        <button type='button' class='btn btn-danger btn-box-danger' aria-label='Borrar' onclick='borrarIdRenta($id)' style='padding: 3px 7px; width: 33px; margin: 1px;'><i class='fa-solid fa-trash'></i></button>
                     </div>
                 </div>
             </td>

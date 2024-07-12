@@ -364,15 +364,19 @@ if ($varsesion == null || $varsesion == '') {
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="cantdias">Cant. días</label>
-                                                        <input type="text" class="form-control form-control-sm field-costo mx-1" id="cantdias" placeholder="Cant. días" autocomplete="off">
+                                                        <input type="number" min="1" step="1" class="form-control form-control-sm field-costo mx-1" id="cantdias" placeholder="Cant. días" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="vehiculoventa">Nro. Vehículo</label>
-                                                        <input type="text" class="form-control form-control-sm field-vehiculoventa mx-1" id="vehiculoventa" placeholder="Vehiculo" autocomplete="off">
+                                                        <input type="number" min="1" step="1" class="form-control form-control-sm field-vehiculoventa mx-1" id="vehiculoventa" placeholder="Vehiculo" autocomplete="off">
+                                                    </div>
+                                                    <div class="label-input">
+                                                        <label for="clienteventa">Cliente</label>
+                                                        <input type="text" class="form-control form-control-sm field-notas mx-1" id="clienteventa" placeholder="Cliente" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="precioventa">Precio</label>
-                                                        <input type="text" class="form-control form-control-sm field-lugar mx-1" id="precioventa" placeholder="Precio" autocomplete="off">
+                                                        <input type="number" min="0" step="100" class="form-control form-control-sm field-lugar mx-1" id="precioventa" placeholder="Precio" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="pagoventa">Pago</label>
@@ -381,8 +385,8 @@ if ($varsesion == null || $varsesion == '') {
                                                             <option value=""></option>
                                                             <option value="Efectivo">Efectivo</option>
                                                             <option value="Tarjeta">Tarjeta</option>
-                                                            <option value="Efectivo y tarjeta">Efectivo y Tarjeta</option>
-                                                            <option value="No pagó">No pagó</option>
+                                                            <option value="Ef/Tarj.">Ef/Tarj.</option>
+                                                            <option value="Pendiente">Pendiente</option>
                                                             <option value="Otro">Otro</option>
                                                         </select>
                                                     </div>
@@ -424,7 +428,8 @@ if ($varsesion == null || $varsesion == '') {
                                             <th>Desde</th>
                                             <th>Hasta</th>
                                             <th>Días</th>
-                                            <th>Vehículo</th>
+                                            <th>V.Nro.</th>
+                                            <th>Cliente</th>
                                             <th>Precio</th>
                                             <th>Pago</th>
                                             <th>Depósito</th>
@@ -467,6 +472,7 @@ if ($varsesion == null || $varsesion == '') {
     <script src="js/listarrentas.js"></script>
     <script src="js/editarrentas.js"></script>
     <script src="js/ventas.js"></script>
+    <script src="js/eliminarrentas.js"></script>
 </body>
 
 </html>

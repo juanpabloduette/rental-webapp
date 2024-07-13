@@ -145,7 +145,7 @@
                             <input type="password" name="password" placeholder="Contraseña" class="form-control input-login" id="password">
 
                         </div>
-                        <input type="submit" value="Ingresar" class="btn btn-success btn-ingresar">
+                        <input type="submit" value="Ingresar" class="btn btn-success btn-ingresar" id="button-submit">
                         <div id="alert"></div>
                     </form>
                 </div>

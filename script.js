@@ -27,8 +27,6 @@ function PanelRender() {
 	fetch("panel.php")
 		.then((response) => response.json())
 		.then((response) => {
-			// console.log(response);
-
 			response.forEach((element) => {
 				switch (element.producto) {
 					case "ATV 150cc":

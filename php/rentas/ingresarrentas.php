@@ -101,7 +101,7 @@ if (!empty($idprimary)) {
     $query->execute();
     echo "actualizado";
 } else {
-    $query = $pdo->prepare("INSERT INTO rentas (fecha,desde,hasta,dias,nrovehiculo,cliente,precio,pago,deposito,vendedor,nota,id) VALUES (:fvt, :fde, :fht, :ctd, :nvv, :clv, :prc, :pgo, :dep, :ven, :nta, :idr)");
+    $query = $pdo->prepare("INSERT INTO rentas (fecha,desde,hasta,dias,nrovehiculo,cliente,precio,pago,deposito,vendedor,nota) VALUES (:fvt, :fde, :fht, :ctd, :nvv, :clv, :prc, :pgo, :dep, :ven, :nta)");
     $query->bindParam(":fvt", $fechaventa);
     $query->bindParam(":fde", $fechaventadesde);
     $query->bindParam(":fht", $fechaventahasta);
@@ -113,7 +113,6 @@ if (!empty($idprimary)) {
     $query->bindParam(":dep", $depositoventa);
     $query->bindParam(":ven", $vendedorventa);
     $query->bindParam(":nta", $notaventa);
-    $query->bindParam(":idr", $idprimary);
     $query->execute();
     echo "ingresado";
 }

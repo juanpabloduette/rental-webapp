@@ -1,8 +1,9 @@
 window.addEventListener("load", () => {
-	let button = document.getElementById("formulario");
-	let usuario = document.getElementById("usuario");
-	let password = document.getElementById("password");
-	let alertt = document.getElementById("alert");
+	const button = document.getElementById("formulario");
+	const usuario = document.getElementById("usuario");
+	const password = document.getElementById("password");
+	const alertt = document.getElementById("alert");
+	const btnSubmit = document.getElementById("button-submit");
 
 	function data() {
 		fetch("validatelogin.php", {
@@ -14,6 +15,7 @@ window.addEventListener("load", () => {
 		})
 			.then((response) => response.json())
 			.then(({ success }) => {
+				btnSubmit.disabled = false;
 				if (success === 1) {
 					location.href = "home.php";
 				} else {
@@ -57,6 +59,7 @@ window.addEventListener("load", () => {
 
 	button.addEventListener("submit", (e) => {
 		e.preventDefault();
+		btnSubmit.disabled = true;
 		data();
 	});
 });

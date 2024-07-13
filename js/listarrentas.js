@@ -1,10 +1,6 @@
-// const historialVehiculo = document.getElementById("exampleModalLabel");
 const tbodyRentas = document.getElementById("tbodyrentas");
 
 function listarrentas() {
-	// 	historialVehiculo.innerHTML = `Vehículo: <span class='historial-span'>${cod}</span>`;
-	// 	document.title = `APP RENTAL - Vehículo ${cod}`;
-
 	fetch("listarrentas.php")
 		.then((response) => response.text())
 		.then((response) => {

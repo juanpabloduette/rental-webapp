@@ -1,14 +1,3 @@
-// const validarRentas = {
-// 	campoFecha: false,
-// 	campoServicio: false,
-// 	campoLugar: false,
-// 	campoCosto: false,
-// 	campoKilometros: false,
-// 	// campoNota: false,
-// };
-
-// const frmVentas = document.getElementById("frm-ventas");
-
 const fechaVenta = document.getElementById("fechaventa");
 const fechaVentaDesde = document.getElementById("fechaventadesde");
 const fechaVentaHasta = document.getElementById("fechaventahasta");
@@ -185,6 +174,9 @@ historialRentas.addEventListener("click", (e) => {
 		validarRentas.campodepositoVenta
 	) {
 		// console.log(idPrimary);
+		historialRentas.innerHTML = `<span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span>`;
+		historialRentas.disabled = true;
+		editarRentasCancelar.disabled = true;
 		fetch("php/rentas/ingresarrentas.php", {
 			method: "POST",
 			body: new URLSearchParams({
@@ -205,6 +197,8 @@ historialRentas.addEventListener("click", (e) => {
 			.then((response) => response.text())
 			.then((response) => {
 				console.log(response);
+				historialRentas.disabled = false;
+				editarRentasCancelar.disabled = false;
 				if (response === "sinmodif") {
 					Swal.fire({
 						icon: "error",
@@ -212,6 +206,7 @@ historialRentas.addEventListener("click", (e) => {
 						showConfirmButton: true,
 						// timer: 1100
 					});
+					historialRentas.innerHTML = `Actualizar`;
 					return;
 				} else if (response === "noexistevehiculo") {
 					Swal.fire({
@@ -220,6 +215,7 @@ historialRentas.addEventListener("click", (e) => {
 						showConfirmButton: true,
 						// timer: 1100
 					});
+					historialRentas.innerHTML = `Actualizar`;
 					return;
 				} else if (response === "ingresado") {
 					Swal.fire({
@@ -228,6 +224,7 @@ historialRentas.addEventListener("click", (e) => {
 						showConfirmButton: false,
 						timer: 950,
 					});
+					historialRentas.innerHTML = `Ingresar`;
 					deActualizarAIngresarVentas();
 					return;
 				} else if (response === "actualizado") {
@@ -237,6 +234,7 @@ historialRentas.addEventListener("click", (e) => {
 						showConfirmButton: false,
 						timer: 950,
 					});
+					historialRentas.innerHTML = `Ingresar`;
 					deActualizarAIngresarVentas();
 					// idPrimary.value = "";
 					historialRentas.classList.remove("btn-warning");

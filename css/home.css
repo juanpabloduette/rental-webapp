@@ -231,6 +231,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
 	display: flex;
 	margin: 6px 0;
 }
+.btn-form-historial,
+.btn-form-historial-cancelar {
+	min-width: 80px;
+}
 
 @media (max-width: 992px) {
 	.acciones-buttons {

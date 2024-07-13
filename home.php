@@ -288,11 +288,11 @@ if ($varsesion == null || $varsesion == '') {
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="costo">Costo</label>
-                                                        <input type="text" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo" autocomplete="off">
+                                                        <input type="number" min="0" step="50" class="form-control form-control-sm field-costo mx-1" id="costo" placeholder="Costo" autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="kilometros">Kilometros</label>
-                                                        <input type="text" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms." autocomplete="off">
+                                                        <input type="number" min="0" step="500" class="form-control form-control-sm field-kms mx-1" id="kilometros" placeholder="Kms." autocomplete="off">
                                                     </div>
                                                     <div class="label-input">
                                                         <label for="nota">Notas</label>

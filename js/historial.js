@@ -22,7 +22,6 @@ const validarHistorial = {
 historialVehiculos.addEventListener("click", (e) => {
 	e.preventDefault();
 	validacionHistorial();
-	//aca iria el bloque que esta antes del fech, chequear si funciona todo bien así
 	// console.log(idPrimary.value);
 	if (
 		validarHistorial.campoFecha &&
@@ -34,6 +33,9 @@ historialVehiculos.addEventListener("click", (e) => {
 		//hay que validar si esta todo repetido que no siga
 	) {
 		console.log(idPrimary);
+		historialVehiculos.innerHTML = `<span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span>`;
+		historialVehiculos.disabled = true;
+		editarHistorialCancelar.disabled = true;
 		fetch("ingresarhistorial.php", {
 			method: "POST",
 			body: new URLSearchParams({
@@ -51,6 +53,8 @@ historialVehiculos.addEventListener("click", (e) => {
 			.then((response) => response.text())
 			.then((response) => {
 				console.log(response);
+				historialVehiculos.disabled = false;
+				editarHistorialCancelar.disabled = false;
 				if (response === "sinmodif") {
 					Swal.fire({
 						icon: "error",
@@ -58,6 +62,7 @@ historialVehiculos.addEventListener("click", (e) => {
 						showConfirmButton: true,
 						// timer: 1100
 					});
+					historialVehiculos.innerHTML = `Actualizar`;
 					return;
 				} else if (response === "ingresado") {
 					Swal.fire({
@@ -66,6 +71,7 @@ historialVehiculos.addEventListener("click", (e) => {
 						showConfirmButton: false,
 						timer: 950,
 					});
+					historialVehiculos.innerHTML = `Ingresar`;
 					deActualizarAIngresar();
 					return;
 				} else if (response === "actualizado") {
@@ -75,6 +81,7 @@ historialVehiculos.addEventListener("click", (e) => {
 						showConfirmButton: false,
 						timer: 950,
 					});
+					historialVehiculos.innerHTML = `Ingresar`;
 					deActualizarAIngresar();
 					idPrimary.value = "";
 					idv.value = "";
@@ -84,7 +91,15 @@ historialVehiculos.addEventListener("click", (e) => {
 					return;
 				}
 			})
-			.catch((error) => console.error("Error:", error));
+			.catch((error) => {
+				console.error("Error:", error);
+				Swal.fire({
+					icon: "error",
+					title: "Problemas con el servidor, vuelva a intentar mas tarde",
+					showConfirmButton: true,
+					// timer: 1100
+				});
+			});
 	}
 });
 

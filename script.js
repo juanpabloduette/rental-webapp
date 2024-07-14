@@ -1,6 +1,8 @@
 ListarProductos();
 
 function ListarProductos(busqueda) {
+	const resultado = document.getElementById("resultado"); // linea agregada porque no la vi en todo el proyecto, pero funcionaba
+	resultado.innerHTML = `<span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span>`;
 	fetch("listar.php", {
 		method: "POST",
 		body: busqueda,
@@ -23,6 +25,56 @@ function PanelRender() {
 	let CountBuggy = 0;
 	let CountBuggyNoDisp = 0;
 	let CountBuggyRentado = 0;
+	const panelTop = document.getElementById("panel--top");
+	panelTop.innerHTML = `
+	  		<div class="panel_disponibles">
+                <div class='panel-disponible'>
+					<div class="panel-span panel-span-1">Disponibles</div>
+				</div>
+				<div class='panel-atv'>
+					<img src='./images/atv.svg' style='width: 30px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+				<div class='panel-scooter'>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+				<div class='panel-bicycle'>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+				<div class='panel-buggy'>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+            </div>
+            <div class="panel_rentados">
+                <div class="panel-span panel-span-3">Rentados</div>
+                <div class='panel-atv'>
+					<img src='./images/atv.svg' style='width: 30px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+				<div class='panel-scooter'>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+				<div class='panel-bicycle'>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+					<div class='panel-buggy'>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+            </div>
+			<div class="panel_no-disponibles">
+                <div class="panel-span panel-span-2">No disponibles</div>
+                <div class='panel-atv'>
+					<img src='./images/atv.svg' style='width: 30px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+				<div class='panel-scooter'>
+					<img src='./images/scooter.svg' style='width: 28px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+				<div class='panel-bicycle'>
+					<img src='./images/bicycle.svg' style='width: 26px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+				<div class='panel-buggy'>
+					<img src='./images/buggy.svg' style='width: 26px;'/><p><span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span></p>
+				</div>
+            </div>
+	`;
 
 	fetch("panel.php")
 		.then((response) => response.json())
@@ -92,7 +144,7 @@ function PanelRender() {
 						break;
 				}
 			});
-			const panelTop = document.getElementById("panel--top");
+
 			panelTop.innerHTML = `
 	  		<div class="panel_disponibles">
                 <div class='panel-disponible'>
@@ -413,7 +465,8 @@ function Eliminar(id, cod) {
 
 function Editar(id) {
 	animateBars(); //muestra el menu en responsive
-
+	// cardTitle.textContent = "Cargando";
+	cardTitle.innerHTML = `<span class="spinner-border" style="position: relative; top: 1px;" aria-hidden="true"></span>`;
 	fetch("editar.php", {
 		method: "POST",
 		body: id,

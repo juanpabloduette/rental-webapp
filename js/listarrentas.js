@@ -1,6 +1,7 @@
 const tbodyRentas = document.getElementById("tbodyrentas");
 
 function listarrentas() {
+	tbodyRentas.innerHTML = `<span class="spinner-border mt-1" aria-hidden="true"></span>`;
 	fetch("listarrentas.php")
 		.then((response) => response.text())
 		.then((response) => {

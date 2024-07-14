@@ -270,7 +270,9 @@ registrar.addEventListener("click", () => {
 	) {
 		borrarBusqueda.style.display = "none"; //borra cerrar de busqueda
 		buscar.value = ""; //borra campo de busqueda
-
+		registrar.innerHTML = `<span class="spinner-border spinner-border-sm" style="position: relative; top: 1px;" aria-hidden="true"></span>`;
+		registrar.disabled = true;
+		cancelar.disabled = true;
 		fetch("registrar.php", {
 			method: "POST",
 			body: new URLSearchParams({
@@ -284,6 +286,8 @@ registrar.addEventListener("click", () => {
 		})
 			.then((response) => response.text())
 			.then((response) => {
+				registrar.disabled = false;
+				cancelar.disabled = false;
 				console.log(response);
 				if (response == "ok") {
 					Swal.fire({
@@ -293,6 +297,7 @@ registrar.addEventListener("click", () => {
 						timer: 950,
 					});
 					frm.reset();
+					registrar.innerHTML = `Ingresar`;
 					ListarProductos();
 					animateBars(); //guarda el menu en responsive
 				} else if (response == "existe") {
@@ -302,6 +307,7 @@ registrar.addEventListener("click", () => {
 						showConfirmButton: true,
 						// timer: 950
 					});
+					registrar.innerHTML = `Ingresar`;
 				} else if (response === "sinmodif") {
 					Swal.fire({
 						icon: "error",
@@ -309,6 +315,7 @@ registrar.addEventListener("click", () => {
 						showConfirmButton: true,
 						// timer: 950
 					});
+					registrar.innerHTML = `Actualizar`;
 				} else {
 					codigo.disabled = false;
 					Swal.fire({
@@ -317,10 +324,11 @@ registrar.addEventListener("click", () => {
 						showConfirmButton: false,
 						timer: 950,
 					});
+					registrar.innerHTML = `Ingresar`;
 
 					cardTitle.textContent = "Ingresar vehículo";
 					cardTitle.style.color = "white";
-					registrar.value = "Ingresar";
+					registrar.innerHTML = "Ingresar";
 					cardHeader.classList.add("bg-dark");
 					idp.value = "";
 					ListarProductos();
@@ -340,7 +348,7 @@ const cardHeader = document.getElementById("card-header");
 cancelar.addEventListener("click", () => {
 	animateBars(); //guarda el menu en responsive
 	frm.reset();
-	registrar.value = "Ingresar";
+	registrar.innerHTML = "Ingresar";
 	cancelar.style.display = "none";
 	idp.value = "";
 	cardHeader.classList.add("bg-dark");
@@ -352,7 +360,7 @@ cancelar.addEventListener("click", () => {
 
 function Eliminar(id, cod) {
 	frm.reset();
-	registrar.value = "Ingresar";
+	registrar.innerHTML = "Ingresar";
 	cancelar.style.display = "none";
 	idp.value = "";
 	cardHeader.classList.add("bg-dark");
@@ -425,7 +433,7 @@ function Editar(id) {
 				fecha.disabled = true;
 			}
 
-			registrar.value = "Actualizar";
+			registrar.innerHTML = "Actualizar";
 			cancelar.style.display = "block";
 
 			cardTitle.style.color = "black";
@@ -484,7 +492,7 @@ function mostrar_menu() {
 function ocultar_menu() {
 	menu.style.left = "-1000px";
 	frm.reset();
-	registrar.value = "Ingresar";
+	registrar.innerHTML = "Ingresar";
 	cancelar.style.display = "none";
 	idp.value = "";
 	cardHeader.classList.add("bg-dark");

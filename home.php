@@ -204,7 +204,7 @@ if ($varsesion == null || $varsesion == '') {
                             </div>
                             <div style="display: flex; justify-content: space-between; margin: 5px 0">
                                 <div class="form-group">
-                                    <input type="button" value="Ingresar" id="registrar" class="btn btn-success btn-block">
+                                    <button type="button" id="registrar" class="btn btn-success btn-block btn-ingresar-vehiculo">Ingresar</button>
                                 </div>
                                 <div class="form-group">
                                     <input type="button" value="Cancelar" id="cancelar" class="btn btn-danger btn-block" style="display:none;">

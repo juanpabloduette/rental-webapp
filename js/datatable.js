@@ -38,6 +38,8 @@ function tableExecute() {
 			},
 			{ responsivePriority: 1, targets: 6 },
 			{ responsivePriority: 2, targets: 1 },
+			{ width: "5%", targets: 3 },
+			{ width: "5%", targets: 4 },
 		],
 		pagingType: "simple_numbers",
 	});
@@ -96,32 +98,35 @@ function tableRentasExecute() {
 		language: {
 			url: "language/es-MX.json",
 		},
+
 		columnDefs: [
 			{
 				orderable: false,
-				targets: [12],
+				targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
 			},
 			{ responsivePriority: 1, targets: 12 },
 			{ responsivePriority: 2, targets: 1 },
+			{ responsivePriority: 2, targets: 5 },
+			{ responsivePriority: 2, targets: 6 },
 			{ className: "dt-center", targets: [3, 4] },
 			{
 				// Aquí especificamos la columna de fecha/hora
-				targets: [1, 2], // Cambia esto al índice de tu columna
+				targets: [1, 2],
 				render: function (data, type, row) {
 					if (type === "display" || type === "filter") {
-						var date = new Date(data);
-						var year = date.getFullYear();
-						var month = (date.getMonth() + 1).toString().padStart(2, "0"); // Los meses empiezan en 0
-						var day = date.getDate().toString().padStart(2, "0");
-						var hours = date.getHours().toString().padStart(2, "0");
-						var minutes = date.getMinutes().toString().padStart(2, "0");
+						let date = new Date(data);
+						let year = date.getFullYear();
+						let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Los meses empiezan en 0
+						let day = date.getDate().toString().padStart(2, "0");
+						let hours = date.getHours().toString().padStart(2, "0");
+						let minutes = date.getMinutes().toString().padStart(2, "0");
 						return `${year}-${month}-${day} ${hours}:${minutes}`;
 					}
 					return data;
 				},
 			},
 			{
-				targets: [7], // Índice de la columna que quieres modificar
+				targets: [7],
 				className: "dt-center", // Para centrar el contenido
 				render: function (data, type, row) {
 					if (data === "Efectivo") {
@@ -166,13 +171,4 @@ function tableRentasExecute() {
 			);
 		}
 	});
-	// // Añadir evento para ajustar la tabla al imprimir o exportar, me lo paso chat gpt para combinar con otra cosa pero no estaria funcionando
-	// var buttons = table.buttons();
-	// buttons.container().appendTo($("#table-rentas_wrapper .col-md-6:eq(0)"));
-
-	// buttons.each(function () {
-	// 	$(this).on("click", function () {
-	// 		table.columns.adjust();
-	// 	});
-	// });
 }

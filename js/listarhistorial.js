@@ -21,6 +21,7 @@ function listarhistorial(id, cod) {
 			if (response !== "<tr>NO HAY RESULTADOS</tr>") {
 				tableExecute(); // vuelve a inciar la tabla con sus funcionalidades
 			}
+			pintarFecha((id = undefined), cod);
 		})
 		.catch((error) => {
 			console.error("Error:", error);

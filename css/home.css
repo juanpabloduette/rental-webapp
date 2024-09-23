@@ -5,16 +5,15 @@
 	font-family: "Open Sans", sans-serif;
 }
 
+.modal-footer {
+	padding: 0 10px !important;
+}
+
 /* #codigo .form-selected disabled {
 	background-color: #212529;
 } */
 
 /* DATATABLE */
-
-/* table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before,
-table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
-	border-left: #495057;
-} */
 
 .dt-length {
 	margin-top: 3px;

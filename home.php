@@ -47,7 +47,7 @@ if ($varsesion == null || $varsesion == '') {
     </div>
     <div class="container panel">
         <div class="panel__top__top">
-            <button class="btn btn-outline-warning btn-block" data-bs-target='#modalventas' data-bs-toggle='modal' onclick=listarrentas()>Historial de rentas<i class="fa-solid fa-hand-holding-dollar"></i></button>
+            <button class="btn btn-outline-warning btn-block" data-bs-target='#modalventas' data-bs-toggle='modal' onclick=listarrentas()>Historial de rentas<i class="fa-solid fa-hand-holding-dollar mx-1"></i></button>
         </div>
         <div class="panel__top" id="panel--top">
             <!-- Contenido Panel -->
@@ -262,6 +262,12 @@ if ($varsesion == null || $varsesion == '') {
                                 </div>
                             </div>
                             <div class="modal-body">
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <p class="mb-0">Vencimiento Tarjeta de circulación:</p>
+                                    <div class="dropdown" id="fecha-tarjeta">
+                                        <!-- Fecha de tarjeta de circulacion   -->
+                                    </div>
+                                </div>
                                 <div class="accordion py-1 accordion-flush accordion-dark accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
@@ -325,7 +331,7 @@ if ($varsesion == null || $varsesion == '') {
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="button-modal-close-footer">Cerrar</button>
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" id="button-modal-close-footer">Cerrar</button>
                             </div>
                         </div>
                     </div>
@@ -334,7 +340,7 @@ if ($varsesion == null || $varsesion == '') {
                     <div class="modal-dialog modal-fullscreen">
                         <div class="modal-content bg-dark text-white">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="ModalVentas"> Historial de rentas</h5>
+                                <h5 class="modal-title" id="ModalVentas"> Historial de rentas<i class="fa-solid fa-hand-holding-dollar mx-1"></i></h5>
                                 <div data-bs-theme="dark">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="button-modal-close-ventas"></button>
                                 </div>
@@ -445,7 +451,7 @@ if ($varsesion == null || $varsesion == '') {
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="button-modal-close-footer-ventas">Cerrar</button>
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal" id="button-modal-close-footer-ventas">Cerrar</button>
                             </div>
                         </div>
                     </div>
@@ -465,6 +471,7 @@ if ($varsesion == null || $varsesion == '') {
     <script src="js/datatables.min.js"></script>
     <script src="js/datatable.js"></script>
     <script src="script.js"></script>
+    <script src="js/fechatarjeta.js"></script>
     <script src="js/historial.js"></script>
     <script src="js/listarhistorial.js"></script>
     <script src="js/borraridhistorial.js"></script>
@@ -473,6 +480,7 @@ if ($varsesion == null || $varsesion == '') {
     <script src="js/editarrentas.js"></script>
     <script src="js/ventas.js"></script>
     <script src="js/eliminarrentas.js"></script>
+
 </body>
 
 </html>
